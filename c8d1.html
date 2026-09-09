@@ -1,0 +1,250 @@
+<!doctype html>
+<!-- served from the CD-Consulting-R-D/KB-AI repository (GitHub Pages project site), published 2026-09-09 -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The 2026 AI Barometer: where Belgian financial services actually stand on AI — CD Consulting R&amp;D</title>
+  <meta name="description" content="A summary of the 2026 AI Barometer (Sailpeak &#183; FinTech Belgium &#183; Vlerick Business School): how Belgian banks and insurers are actually deploying AI, from Copilot to agents.">
+  <style>
+/* Mixed edition (8 September 2026): light by default, dark when the system asks for it,
+   and a manual switch (remembered in this browser) that overrides the system in both
+   directions. The nocturnal palette below is the one this entry was first published with;
+   the light one is that of the chapter indexes. */
+:root{
+  color-scheme:light dark;
+  --bg:#f7f6f3; --panel:#ffffff; --panel-2:#efede8; --quote:#f1efea; --code:#efede8;
+  --ink:#1a1a1a; --ink-strong:#0e0e0e; --muted:#555c66; --rule:#ddd8cf; --rule-soft:#e8e4dc;
+  --accent:#3d6478; --accent-hover:#274a5c; --sel:#d9e4ec; --hover:#f3f1ec;
+  --scroll:#c9c4ba; --scroll-hover:#b3ada2;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+    --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+    --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a;
+    --scroll:#39424f; --scroll-hover:#4a5563;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+  --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+  --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a;
+  --scroll:#39424f; --scroll-hover:#4a5563;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility}
+.wrap{max-width:900px;margin:0 auto;padding:56px 24px 104px}
+::selection{background:var(--sel);color:var(--ink-strong)}
+
+h1{font-family:var(--serif);font-size:clamp(27px,4.4vw,42px);line-height:1.15;
+  font-weight:600;letter-spacing:-.015em;margin:0 0 18px;color:var(--ink-strong);
+  padding-bottom:22px;border-bottom:2px solid var(--accent)}
+h2{font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:-.01em;
+  color:var(--ink-strong);margin:60px 0 14px;padding-top:26px;
+  border-top:1px solid var(--rule);scroll-margin-top:16px}
+h2#contents{border-top:none;padding-top:0;margin-top:42px}
+h3{font-size:18px;font-weight:600;margin:38px 0 10px;letter-spacing:-.005em;
+  font-family:var(--serif);color:var(--ink-strong);scroll-margin-top:16px}
+p{margin:0 0 17px;max-width:72ch}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
+strong{font-weight:650;color:var(--ink-strong)}
+em{font-style:italic}
+hr{border:none;border-top:1px solid var(--rule-soft);margin:46px 0}
+ul,ol{max-width:72ch;padding-left:24px;margin:0 0 19px}
+li{margin-bottom:10px}
+li>p{margin-bottom:10px}
+li::marker{color:var(--muted)}
+
+/* Table of contents */
+h2#contents + ol{background:var(--panel);border:1px solid var(--rule);border-radius:10px;
+  padding:22px 22px 22px 46px;max-width:none;font-size:15px}
+h2#contents + ol li{margin-bottom:8px}
+h2#contents + ol li::marker{color:var(--accent)}
+
+blockquote{margin:26px 0;padding:18px 24px;border-left:3px solid var(--accent);
+  background:var(--quote);border-radius:0 9px 9px 0;font-family:var(--serif);
+  font-size:16.5px;line-height:1.58;color:var(--ink-strong)}
+blockquote p{margin:0 0 12px;max-width:66ch}
+blockquote p:last-child{margin:0}
+blockquote ul,blockquote ol{margin:0}
+blockquote li{color:var(--ink-strong)}
+
+code{font-family:var(--mono);font-size:.87em;background:var(--code);
+  color:var(--ink);padding:2px 6px;border-radius:4px;word-break:break-word;
+  border:1px solid var(--rule-soft)}
+pre{background:var(--code);border:1px solid var(--rule);border-radius:9px;
+  padding:15px 17px;overflow-x:auto;font-size:13px;line-height:1.55}
+pre code{background:none;padding:0;border:none}
+
+.scroll{overflow-x:auto;margin:26px 0 30px;border:1px solid var(--rule);
+  border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule-soft);
+  vertical-align:top;line-height:1.55}
+thead th{background:var(--panel-2);color:var(--ink-strong);font-size:11.5px;
+  letter-spacing:.06em;text-transform:uppercase;font-weight:650;white-space:nowrap;
+  border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hover)}
+td code{white-space:nowrap}
+td em{color:var(--muted)}
+
+ol.srclist{background:var(--panel);border:1px solid var(--rule);border-radius:10px;
+  padding:22px 24px 22px 48px;max-width:none}
+ol.srclist li{margin-bottom:15px;line-height:1.55}
+ol.srclist li:last-child{margin-bottom:0}
+ol.srclist li::marker{color:var(--accent)}
+ol.srclist a{font-family:var(--mono);font-size:13.5px;word-break:break-all}
+ol.srclist .s{font-size:13.5px;color:var(--muted)}
+p.srcnote{font-size:13.5px;color:var(--muted);margin-top:15px}
+
+/* Dark scrollbars, so the chrome does not glare against the page */
+*{scrollbar-color:var(--scroll) var(--bg)}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--scroll);border-radius:6px;
+  border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--scroll-hover)}
+
+@media (max-width:640px){
+  .wrap{padding:34px 16px 68px}
+  body{font-size:16px}
+  h2#contents + ol,ol.srclist{padding-left:38px}
+}
+/* Paper is not a screen: print goes back to ink on white. */
+@media print{
+  html,body{background:#fff;color:#000;font-size:11pt}
+  .wrap{max-width:none;padding:0}
+  h1,h2,h3,strong,blockquote{color:#000}
+  h1{border-bottom-color:#000}
+  h2{border-top-color:#999;page-break-after:avoid}
+  a{color:#000}
+  code,pre,blockquote,.scroll,h2#contents + ol,ol.srclist{background:#fff;
+    border-color:#bbb;color:#000}
+  thead th{background:#eee;color:#000}
+  .scroll{page-break-inside:avoid;overflow:visible}
+  table{min-width:0;font-size:9pt}
+  td,th{border-bottom-color:#ccc}
+  .muted,p.srcnote,ol.srclist .s{color:#444}
+}
+
+/* CD Consulting R&D wrapper: nav, cartouche, footer — aligned to the palette above */
+.mark{font-family:var(--sans);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:22px;text-align:center}
+nav.crumbs{font-family:var(--sans);font-size:12.5px;text-align:center;color:var(--muted);
+  margin-bottom:26px}
+nav.crumbs a{color:var(--accent)}
+.cartouche{font-family:var(--sans);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin-bottom:34px;padding-bottom:24px;
+  border-bottom:1px solid var(--rule-soft)}
+h1{text-align:center}
+.standfirst{font-family:var(--serif);font-size:16px;color:var(--muted);text-align:center;
+  margin:0 0 8px;max-width:none}
+.meta-line{font-family:var(--sans);font-size:13px;color:var(--muted);text-align:center;
+  margin-bottom:38px;max-width:none}
+.theme{position:fixed;top:14px;right:14px;font-family:var(--sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--panel);color:var(--muted);border:1px solid var(--rule);border-radius:99px;padding:6px 12px;cursor:pointer;z-index:5}
+.theme:hover{color:var(--accent);border-color:var(--accent)}
+@media (max-width:640px){.theme{top:8px;right:8px}}
+@media print{.theme{display:none}}
+footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--rule);
+  font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6}
+footer p{margin-bottom:14px;max-width:none}
+footer p:last-child{margin-bottom:0}
+footer h2{font-family:var(--sans);font-size:12px;font-weight:650;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);border:none;padding:0;margin:30px 0 12px}
+footer .backlinks{text-align:center;margin-top:34px;font-size:14px}
+  
+/* Start-here primer for the non-specialist reader (editorial charter, rule 1) */
+aside.primer{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:18px 22px;margin:8px 0 34px;font-size:15.5px;line-height:1.6;max-width:none}
+aside.primer .primer-title{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px;max-width:none}
+aside.primer p{margin:0 0 10px;max-width:72ch}
+aside.primer p:last-child{margin-bottom:0}
+aside.primer em{font-style:italic;color:var(--ink)}
+@media print{aside.primer{background:#fff;border-color:#bbb}}
+</style>
+  <script>(function(){try{var t=localStorage.getItem("kb-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+</head>
+<body>
+  <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">Light / Dark</button>
+  <main class="wrap">
+    <p class="mark">CD Consulting R&amp;D</p>
+    <nav class="crumbs"><a href="../index.html">Home</a> · <a href="./">KB-AI</a> · Entry 1</nav>
+    <p class="cartouche">CD Consulting R&amp;D · KB-AI · entry 1 · report summary · 9 September 2026 · published 9 September 2026</p>
+
+<h1 id="the-2026-ai-barometer">The 2026 AI Barometer: where Belgian financial services actually stand on AI</h1>
+<hr />
+<aside class="primer">
+<p class="primer-title">Start here — if the subject is new to you</p>
+<p>An industry <em>barometer</em> is a recurring temperature check: the same sector is surveyed year after year, so the interesting signal is not any single number but the movement between editions. The one summarised here measures how Belgian banks and insurers are adopting artificial intelligence — from everyday assistants that draft e-mails to <em>agentic AI</em>, systems that plan and execute multi-step tasks with little human intervention between the steps.</p>
+<p>Why it matters beyond the sector: financial services are heavily regulated, risk-averse and data-rich — close to a worst case for careless AI deployment and a best case for observing how serious organisations actually absorb the technology. What blocks them, and what works for them, tends to preview what other industries will meet a year or two later.</p>
+</aside>
+
+<h2 id="what-the-barometer-is">What the Barometer is</h2>
+<p>The <strong>2026 AI Barometer</strong> is an annual survey of AI adoption in the Belgian financial sector, run by the consultancy Sailpeak with FinTech Belgium and Vlerick Business School (Prof. Bjorn Cumps). This edition combines a quantitative survey of <strong>20 institutions</strong> — covering, by the organisers' count, over 90&nbsp;% of the Belgian retail banking market and roughly two thirds of private banking — with <strong>nine long-form interviews</strong> of senior AI executives at BNP Paribas Fortis, Belfius, ING Belgium, Ethias, Baloise, DKV/ERGO, Bank van Breda, Keytrade Bank and one bank that chose to stay anonymous. Respondents sit mostly in the functions doing the work — data &amp; AI offices (45&nbsp;%), transformation offices (25&nbsp;%), IT (20&nbsp;%) — which makes the answers operator-led rather than communications-led, a point the editors themselves make.</p>
+
+<h2 id="what-it-finds">What it finds — ten takeaways, condensed</h2>
+<ol type="1">
+<li><strong>The panic is over.</strong> Only 20&nbsp;% of leaders now say their organisation moves too slowly on AI, down from 54&nbsp;% a year earlier; one in five plans to more than double AI investment, and the largest cohort now expects a 2–3× return. The editors' warning: "confidence is not embeddedness".</li>
+<li><strong>Two use cases have reached real production scale</strong>: coding assistance (the widest deployment in the sector) and customer-service automation. Around them cluster document processing and contact-centre transformation — one institution handles loan-origination documents autonomously in 85&nbsp;% of cases; another pushes millions of customer contacts a year through an AI-enhanced channel.</li>
+<li><strong>The most discussed use cases are the least deployed.</strong> Wealth management, financial forecasting and credit scoring sit close to zero in production. The barrier is not the models: 60&nbsp;% of organisations have not automated the preparation of the documents their AI depends on, and fully automated document readiness stands at 5&nbsp;%.</li>
+<li><strong>The bottleneck is no longer the technology</strong> — it is legacy IT integration (top barrier at 60&nbsp;%), data quality (55&nbsp;%) and process redesign. A recurring practitioner lesson: do not build in a sandbox; work inside the production environment from the start.</li>
+<li><strong>Governance is centralising</strong> — nearly two thirds of institutions now run AI through a dedicated unit with C-suite representation — but the governance of <em>third-party</em> AI use (brokers, agents, advisers handling client data with their own tools) is a named blind spot.</li>
+<li><strong>The productivity dividend is real and badly counted.</strong> Copilot-class assistants are the most widely deployed category of all; the realised value exceeds what was modelled, yet organisations admit they have no full inventory of the time and cost actually saved.</li>
+<li><strong>AI is "10&nbsp;% technology, 90&nbsp;% people"</strong> — the interviewees' consensus. Employee adoption ranks with regulatory compliance as the top rollout blocker, while HR scores <em>zero</em> as an expected AI impact zone in the survey.</li>
+<li><strong>Agentic AI is the theme of 2026 — and mostly a slide, not a system.</strong> Half of organisations grant agentic AI zero decision-making authority; three quarters govern it without a dedicated framework. A small frontier group is already running multi-agent architectures in production, including one customer-facing "super-agent". No institution lets fully autonomous agents make consequential decisions without a human in the loop.</li>
+<li><strong>The workforce question is unanswered.</strong> 80&nbsp;% of organisations have no formal plan for AI-driven workforce change although a clear majority expects headcount reductions within three years; 42&nbsp;% have assigned accountability without producing a plan.</li>
+<li><strong>The gap is execution, not strategy.</strong> The report's closing thesis: the leaders will be the institutions that did the unglamorous work — process documentation, data governance, model-migration inventories — before the technology made it urgent.</li>
+</ol>
+
+<h2 id="a-reading">A reading</h2>
+<p>Three threads deserve more attention than the headline numbers.</p>
+<p><strong>The data floor.</strong> The single most quotable statistic is the least dramatic one: 5&nbsp;% fully automated document readiness. Every ambition higher up the stack — agents, autonomous decisions, hyper-personalisation — rests on that floor. The Barometer is, read closely, a report about plumbing.</p>
+<p><strong>The HR paradox.</strong> The function responsible for building workforce capability scores zero as an expected AI impact zone, while 80&nbsp;% of organisations have no workforce plan. The report notes the coincidence without forcing the conclusion; the conclusion rather forces itself.</p>
+<p><strong>Universal oversight, unexamined oversight.</strong> Every institution keeps a human in the loop for consequential decisions — reassuring, until one asks how well that loop performs under volume. That question is precisely the subject of a paper summarised in the neighbouring chapter of this knowledge base (<a href="../KB-RISK/7b3d.html">"AI Agents Push Humans Out of the Loop" — a critical reading note</a>): human oversight degrades exactly where agentic deployment stresses it. The Barometer documents the sector building the loop; the paper explains why the loop wears out. Read together, they bracket the real 2026 question.</p>
+
+<h2 id="limits">Limits of the exercise</h2>
+<ol type="1">
+<li><strong>It is a consultancy-led publication, not an academic study.</strong> Sailpeak organises the Barometer and sells adjacent services; the academic partner lends method, not independence. Percentages on a panel of 20, with multi-select questions summing over 100&nbsp;%, should be read as directional, not statistical.</li>
+<li><strong>The panel self-selects toward the convinced.</strong> The organisers acknowledge the skew "toward institutions where AI investment is most material"; the interviewees are heads of AI talking about their own programmes. Absent are the institutions with nothing to show.</li>
+<li><strong>A third of the report is showcase material</strong> — profiles of FinTech vendors (debt-collection agents, stablecoin rails, document-fraud detection, credit-decision automation) written in the vendors' own voice, with their own metrics. Useful as a market map; not evidence in the survey's sense.</li>
+</ol>
+
+<h2 id="verdict">Verdict</h2>
+<p><strong>Verdict</strong>: methodologically modest, directionally credible. The survey numbers are soft, but the qualitative picture — production scale in two mundane use cases, near-zero deployment in the glamorous ones, data readiness as the binding constraint, workforce planning as the open flank — is consistent across twenty institutions and nine interviews, and consistent with what international surveys report at larger scale. As a one-hour orientation on where a regulated European sector actually stands with AI in 2026, it is hard to beat — provided the showcase chapters are read as advertising.</p>
+
+<h2 id="source">Source</h2>
+<p>2026 AI Barometer — <em>In the financial services industry</em>, Sailpeak · FinTech Belgium · Vlerick Business School, 2026. This summary is based on the "Key Results" and "Full Interviews" sections (site captures of 26 June 2026; site re-checked live on 9 September 2026). Figures quoted are the report's own.</p>
+
+    <footer>
+      <p>This summary is © CD Consulting R&amp;D and licensed under
+      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener noreferrer" target="_blank">CC BY-NC-ND 4.0</a>
+      (attribution, non-commercial, no derivatives). The 2026 AI Barometer is © its editorial team
+      (Sailpeak · FinTech Belgium · Vlerick Business School); it is summarised here in our own words, with brief attributed quotation.</p>
+
+      <h2>Sources online</h2>
+      <ol class="srclist">
+        <li><a href="https://ai-barometer.be/" rel="noopener noreferrer"
+            target="_blank">https://ai-barometer.be/</a><br>
+          2026 AI Barometer — key insights, demographics and showcases (publicly accessible; consulted 9 September 2026).</li>
+        <li><a href="https://ai-barometer.be/interviews.html" rel="noopener noreferrer"
+            target="_blank">https://ai-barometer.be/interviews.html</a><br>
+          2026 AI Barometer — full interviews with the nine featured AI executives.</li>
+      </ol>
+
+      <p class="backlinks"><a href="./">← KB-AI</a> · <a href="../index.html">CD Consulting R&amp;D</a></p>
+    </footer>
+  </main>
+  <script>(function(){var b=document.getElementById("theme");b.addEventListener("click",function(){var r=document.documentElement;var cur=r.getAttribute("data-theme");var sys=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";var now=(cur||sys)==="dark"?"light":"dark";r.setAttribute("data-theme",now);try{localStorage.setItem("kb-theme",now);}catch(e){}});})();</script>
+</body>
+</html>
