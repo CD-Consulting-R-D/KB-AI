@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Un modèle, beaucoup de portes : la carte datée des canaux d'accès à Claude en octobre 2026, en bref — CD Consulting R&amp;D</title>
+  <meta name="description" content="Version française : Anthropic vend le même modèle par quatre familles de portes ; le moteur est le même partout, ce qui change est où tourne la session, qui est facturé et ce qui persiste. Une table de sept lignes, la distinction dossier/compte, le crédit « sessions cloud » expliqué, le régime des données, et quatre questions pour choisir.">
+  <style>
+/* Mixed edition: light by default, dark when the system asks for it, and a manual switch
+   (remembered in this browser) that overrides the system in both directions. The two
+   palettes are those already used in this Knowledge Base: the light one of the chapter
+   indexes, the nocturnal one of entry 1. */
+:root{
+  color-scheme:light dark;
+  --bg:#f7f6f3; --panel:#ffffff; --panel-2:#efede8; --quote:#f1efea; --code:#efede8;
+  --ink:#1a1a1a; --ink-strong:#0e0e0e; --muted:#555c66; --rule:#ddd8cf; --rule-soft:#e8e4dc;
+  --accent:#3d6478; --accent-hover:#274a5c; --sel:#d9e4ec; --hover:#f3f1ec; --scroll:#c9c4ba;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+    --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+    --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a; --scroll:#39424f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+  --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+  --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a; --scroll:#39424f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{max-width:900px;margin:0 auto;padding:56px 24px 104px}
+::selection{background:var(--sel);color:var(--ink-strong)}
+h1{font-family:var(--serif);font-size:clamp(27px,4.4vw,42px);line-height:1.15;font-weight:600;letter-spacing:-.015em;
+  margin:0 0 18px;color:var(--ink-strong);padding-bottom:22px;border-bottom:2px solid var(--accent);text-align:center}
+h2{font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:-.01em;color:var(--ink-strong);
+  margin:60px 0 14px;padding-top:26px;border-top:1px solid var(--rule);scroll-margin-top:16px}
+h2#contents{border-top:none;padding-top:0;margin-top:42px}
+h3{font-size:18px;font-weight:600;margin:38px 0 10px;letter-spacing:-.005em;font-family:var(--serif);color:var(--ink-strong);scroll-margin-top:16px}
+p{margin:0 0 17px;max-width:72ch}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
+a.ref{font-family:var(--sans);font-size:.82em;text-decoration:none;white-space:nowrap}
+strong{font-weight:650;color:var(--ink-strong)}
+ul,ol{max-width:72ch;padding-left:24px;margin:0 0 19px}
+li{margin-bottom:10px}
+li::marker{color:var(--muted)}
+h2#contents + ol{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px 22px 22px 46px;max-width:none;font-size:15px}
+h2#contents + ol li{margin-bottom:8px}
+h2#contents + ol li::marker{color:var(--accent)}
+code{font-family:var(--mono);font-size:.87em;background:var(--code);color:var(--ink);padding:2px 6px;border-radius:4px;word-break:break-word;border:1px solid var(--rule-soft)}
+.scroll{overflow-x:auto;margin:26px 0 30px;border:1px solid var(--rule);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.55}
+thead th{background:var(--panel-2);color:var(--ink-strong);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:650;border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hover)}
+ol.srclist{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px 24px 22px 24px;max-width:none;list-style:none}
+ol.srclist li{margin-bottom:15px;line-height:1.55;font-size:14px;padding-left:52px;position:relative}
+ol.srclist li:last-child{margin-bottom:0}
+ol.srclist li .tag{position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--rule);border-radius:4px;padding:1px 5px}
+ol.srclist a{font-family:var(--mono);font-size:12.5px;word-break:break-all}
+*{scrollbar-color:var(--scroll) var(--bg)}
+.mark{font-family:var(--sans);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;text-align:center}
+nav.crumbs{font-family:var(--sans);font-size:12.5px;text-align:center;color:var(--muted);margin-bottom:26px}
+nav.crumbs a{color:var(--accent)}
+.cartouche{font-family:var(--sans);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:34px;padding-bottom:24px;border-bottom:1px solid var(--rule-soft)}
+.standfirst{font-family:var(--serif);font-size:16px;color:var(--muted);text-align:center;margin:0 0 8px;max-width:none}
+.meta-line{font-family:var(--sans);font-size:13px;color:var(--muted);text-align:center;margin-bottom:38px;max-width:none}
+.theme{position:fixed;top:14px;right:14px;font-family:var(--sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--panel);color:var(--muted);border:1px solid var(--rule);border-radius:99px;padding:6px 12px;cursor:pointer}
+.theme:hover{color:var(--accent);border-color:var(--accent)}
+footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6}
+footer p{margin-bottom:14px;max-width:none}
+footer .backlinks{text-align:center;margin-top:34px;font-size:14px}
+@media (max-width:640px){.wrap{padding:34px 16px 68px}body{font-size:16px}h2#contents + ol{padding-left:38px}.theme{top:8px;right:8px}}
+@media print{html,body{background:#fff;color:#000;font-size:11pt}.wrap{max-width:none;padding:0}.theme{display:none}
+  h1,h2,h3,strong{color:#000}h1{border-bottom-color:#000}h2{border-top-color:#999;page-break-after:avoid}a{color:#000}
+  code,.scroll,h2#contents + ol,ol.srclist{background:#fff;border-color:#bbb;color:#000}thead th{background:#eee;color:#000}
+  .scroll{page-break-inside:avoid;overflow:visible}table{min-width:0;font-size:9pt}td,th{border-bottom-color:#ccc}}
+  
+/* Start-here primer for the non-specialist reader (editorial charter, rule 1) */
+aside.primer{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:18px 22px;margin:8px 0 34px;font-size:15.5px;line-height:1.6;max-width:none}
+aside.primer .primer-title{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px;max-width:none}
+aside.primer p{margin:0 0 10px;max-width:72ch}
+aside.primer p:last-child{margin-bottom:0}
+aside.primer em{font-style:italic;color:var(--ink)}
+@media print{aside.primer{background:#fff;border-color:#bbb}}
+.enjeu{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--accent);text-align:center;margin:0 0 8px}
+
+:root{--accent:#4a4a8c;--accent-hover:#36366b;--kb-c:#4a4a8c;
+  --kb-forme:none;--kb-fond:transparent;--kb-bord:2px solid var(--kb-c);--kb-rayon:50%;
+  --kb-filet:repeating-linear-gradient(90deg,var(--kb-c) 0 2px,transparent 2px 6px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#a0a0dc;--accent-hover:#c0c0ec;--kb-c:#a0a0dc}}
+:root[data-theme="dark"]{--accent:#a0a0dc;--accent-hover:#c0c0ec;--kb-c:#a0a0dc}
+h1{border-bottom-color:transparent;position:relative}
+h1::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-2px;
+  width:170px;height:4px;background:var(--kb-filet)}
+.mark::before{content:"";display:inline-block;box-sizing:border-box;width:10px;height:10px;
+  vertical-align:1px;margin-right:11px;background:var(--kb-fond);clip-path:var(--kb-forme);
+  border:var(--kb-bord);border-radius:var(--kb-rayon)}
+  </style>
+  <script>(function(){try{var t=localStorage.getItem("kb-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+</head>
+<body>
+  <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">Light / Dark</button>
+  <main class="wrap">
+    <p class="mark">CD Consulting R&amp;D</p>
+    <nav class="crumbs" lang="en"><a href="../index.html">Home</a> · <a href="./">KB-AI</a> · Entry 2</nav>
+    <p class="cartouche" lang="en">KB-AI · Entry 2 · Published 2026-10-11 · Version 1</p>
+<h1>Un modèle, beaucoup de portes : la carte datée des canaux d'accès à Claude en octobre 2026, en bref</h1>
+<p class="standfirst" lang="en">Version française condensée de l’entrée 2 : les quatre familles de portes vers Claude (applications, Claude Code, plateforme développeur, places de marché des nuages), une table qui dit où chaque porte tourne, qui facture et ce qui persiste, l’idée qui rend la carte lisible, et quatre questions pour choisir.</p>
+<p class="enjeu" lang="en">If you read French and want the map of every door to Claude on one page, this is the condensed version of entry 2: where each door runs, who pays, what persists, and how to choose.</p>
+<p class="meta-line" lang="en">Note de travail · environ 2 300 mots · version française de l’entrée 2, écrite le 11 octobre 2026 d’après les mêmes pages officielles d’Anthropic ; prix catalogue en dollars.</p>
+<aside class="primer" lang="en">
+<p class="primer-title">Start here — si le sujet est nouveau pour vous</p>
+<p>Claude est la famille de modèles de langage d'Anthropic. On peut l'atteindre par une fenêtre de conversation, une application de bureau, une extension de navigateur, un complément pour Word ou Excel, un outil en ligne de commande pour développeurs, un service d'agents hébergé, et par les nuages d'Amazon, de Google et de Microsoft. Anthropic parle tour à tour de « surfaces », de « plateformes » et de « fournisseurs », et les noms changent tous les quelques mois.</p>
+<p>Cela compte parce que le choix de la porte décide de trois choses qu'on confond facilement : où tourne réellement le travail, qui envoie la facture, et ce que deviennent vos données. Deux personnes qui « utilisent Claude » peuvent être dans des situations très différentes sur ces trois points.</p>
+<p>Cette note résume en une page la carte complète publiée en anglais : quatre familles de portes, une table, l'idée qui rend la carte lisible, et quatre questions pour choisir.</p>
+</aside>
+<h2 id="contents" lang="en">Contents</h2>
+<ol>
+<li><a href="#1-la-question-derri-re-la-confusion">1. La question derrière la confusion</a></li>
+<li><a href="#2-la-carte-en-une-table">2. La carte en une table</a></li>
+<li><a href="#3-les-quatre-familles-en-bref">3. Les quatre familles en bref</a></li>
+<li><a href="#4-o-vit-le-contexte-un-dossier-ou-un-compte">4. Où vit le contexte : un dossier ou un compte</a></li>
+<li><a href="#5-qui-paie-o-vont-les-donn-es">5. Qui paie, où vont les données</a></li>
+<li><a href="#6-choisir-en-quatre-questions">6. Choisir en quatre questions</a></li>
+<li><a href="#7-sources">7. Sources</a></li>
+</ol>
+
+<h2 id="1-la-question-derri-re-la-confusion">1. La question derrière la confusion</h2>
+<p>Read this note in English, with its full argument and twenty-seven sources: <a href="7e5c.html">English version</a> <a class="ref" href="#S1">[S1]</a>.</p>
+<p>Quiconque utilise Claude depuis quelques semaines finit par se poser la même question : pourquoi « Claude » est-il vendu à la fois comme une application, un outil de développement, une « session cloud » et un produit Amazon ? La réponse tient en deux idées. D'abord, le moteur est le même partout : Anthropic écrit que « Claude Code runs the same underlying engine everywhere, but each surface is tuned for a different way of working » <a class="ref" href="#S3">[S3]</a>. Ce qui change, c'est l'environnement dans lequel ce moteur est lancé : un dossier sur votre machine, ou un conteneur éphémère dans le nuage d'Anthropic. Ensuite, il faut séparer deux questions que le marketing confond : où tourne la session, et qui la déclenche et la paie.</p>
+<p>La carte est volontairement datée. Dans le mois qui précède le 11 octobre 2026, Anthropic a fusionné deux de ses produits grand public en un seul <a class="ref" href="#S5">[S5]</a>, lancé une promotion de crédit qui expire le 4 novembre <a class="ref" href="#S6">[S6]</a>, et conservé au moins une page de documentation qui décrit encore l'ancienne disposition. La méthode de lecture, elle, ne périme pas.</p>
+
+<h2 id="2-la-carte-en-une-table">2. La carte en une table</h2>
+<p>Quatre familles couvrent toutes les portes. Les <strong>applications Claude</strong> (web, bureau, mobile, extension Chrome, compléments Office), payées par abonnement. <strong>Claude Code</strong>, l'agent pour le logiciel et, de plus en plus, pour tout travail sur fichiers, atteint par un terminal, un éditeur, l'application de bureau, le navigateur, le téléphone ou Slack. La <strong>plateforme développeur</strong> (API et service d'agents hébergé), payée au jeton. Les <strong>places de marché des nuages</strong> (Amazon Bedrock, Google Cloud's Agent Platform, ex-Vertex AI, Microsoft Foundry), facturées par ces fournisseurs.</p>
+<div class="scroll"><table><thead><tr><th>Porte</th><th>Où tourne le travail</th><th>Qui facture</th><th>Ce qui persiste</th></tr></thead><tbody>
+<tr><td>Application Claude (chat et Cowork fusionnés depuis le 16 septembre 2026)</td><td>Le nuage d'Anthropic, plus votre machine quand l'application de bureau est ouverte et des dossiers accordés <a class="ref" href="#S5">[S5]</a></td><td>Anthropic, par abonnement (Free, Pro, Max, Team, Enterprise) <a class="ref" href="#S4">[S4]</a></td><td>Votre compte : mémoire, projets, skills, connecteurs</td></tr>
+<tr><td>Claude in Chrome, Claude for Microsoft 365</td><td>Votre navigateur ou votre application Office</td><td>Inclus dans les plans payants <a class="ref" href="#S4">[S4]</a></td><td>Raccourcis et tâches planifiées, état de conversation entre les applications</td></tr>
+<tr><td>Claude Code local (CLI, VS Code, JetBrains, bureau « Local »)</td><td>Votre machine <a class="ref" href="#S3">[S3]</a></td><td>Abonnement, clé API, ou fournisseur cloud <a class="ref" href="#S2">[S2]</a></td><td>Le dossier : <code>CLAUDE.md</code>, <code>.claude/</code>, l'historique git</td></tr>
+<tr><td>Claude Code en sessions cloud (web, mobile, bureau « Cloud », Slack, Routines)</td><td>Une machine virtuelle gérée par Anthropic, ou les serveurs de votre organisation <a class="ref" href="#S3">[S3]</a></td><td>Abonnement seulement ; compte dans les limites du plan, sans frais séparé pour la machine <a class="ref" href="#S6">[S6]</a></td><td>La branche GitHub poussée ; la transcription chez Anthropic</td></tr>
+<tr><td>API Messages, Agent SDK</td><td>Votre infrastructure, l'inférence chez Anthropic</td><td>Anthropic, à la consommation par million de jetons <a class="ref" href="#S4">[S4]</a></td><td>Ce que votre application conserve</td></tr>
+<tr><td>Managed Agents (bêta)</td><td>Le bac à sable d'Anthropic, ou le vôtre</td><td>Jetons plus 0,08 $ par heure de session <a class="ref" href="#S4">[S4]</a></td><td>Sessions, fichiers et historique, côté serveur</td></tr>
+<tr><td>Bedrock, Agent Platform, Foundry ; Claude Platform on AWS</td><td>L'infrastructure du fournisseur (pour Foundry : le service d'Anthropic sur Azure ou chez Anthropic)</td><td>Le fournisseur de nuage, sur votre facture existante <a class="ref" href="#S2">[S2]</a></td><td>Ce que votre application conserve ; journaux d'audit du fournisseur</td></tr>
+</tbody></table></div>
+<p>Trois constats. Les portes qui tournent sur votre propre machine sont minoritaires. Il n'y a que deux façons de payer, l'abonnement ou la consommation, et chaque porte en utilise exactement une. Et ce qui persiste n'est jamais le même objet : un compte, un dossier, une branche, un magasin de sessions, un journal d'audit. C'est de cette troisième colonne que viennent la plupart des surprises.</p>
+
+<h2 id="3-les-quatre-familles-en-bref">3. Les quatre familles en bref</h2>
+<p><strong>Les applications.</strong> Depuis le 16 septembre 2026, l'utilisateur ne choisit plus entre « chat » et « Cowork » : il y a un seul Claude, qui « determines what a task needs » ; le déploiement a commencé par les plans Pro et Max, Team et Free suivent, les organisations Enterprise ont au moins trente jours de préavis <a class="ref" href="#S5">[S5]</a>. L'application de bureau ajoute l'accès aux dossiers accordés, un navigateur intégré et, en bêta, l'usage de l'ordinateur. L'extension Chrome lit, clique et navigue dans votre navigateur avec vos sessions ouvertes ; les compléments Office partagent une conversation entre Excel, PowerPoint, Word et Outlook. Les plans vont de Free (chat seul, Sonnet et Haiku) à Pro (20 $ par mois, avec Claude Code, Chrome et Office), Max (dès 100 $, avec du crédit API inclus), Team et Enterprise <a class="ref" href="#S4">[S4]</a>.</p>
+<p><strong>Claude Code.</strong> Six surfaces pour un seul moteur : le terminal, le plus complet ; l'onglet Code de l'application de bureau ; VS Code et JetBrains ; le web, où les sessions tournent dans le nuage et « continuent après que vous vous êtes déconnecté » ; le mobile, qui n'est qu'un client <a class="ref" href="#S3">[S3]</a>. La ligne décisive sépare les surfaces locales, ancrées dans un dossier, des sessions cloud, ancrées dans un dépôt GitHub cloné dans une machine virtuelle d'Anthropic. Autour, cinq façons de travailler loin de son terminal : Dispatch, Remote Control, Channels, Slack et les Routines, ces dernières étant des invites enregistrées qui tournent sur un horaire, un appel HTTP ou un événement GitHub, en sessions cloud autonomes <a class="ref" href="#S3">[S3]</a>.</p>
+<p><strong>La plateforme.</strong> Deux façons de construire : l'API Messages, où votre code écrit sa propre boucle d'agent, et Managed Agents, où Anthropic héberge la boucle, le bac à sable et l'état des sessions, en bêta <a class="ref" href="#S2">[S2]</a>. Entre les deux, l'Agent SDK emparquette le moteur de Claude Code en bibliothèque Python ou TypeScript ; un produit bâti dessus doit s'authentifier avec une clé API, jamais avec l'abonnement d'un utilisateur.</p>
+<p><strong>Les revendeurs.</strong> Les mêmes quatre modèles sont vendus sur Bedrock, l'Agent Platform de Google et Foundry, avec l'identité, la facturation et les journaux d'audit de chaque fournisseur. Ce qu'on y perd est publié sur une seule page de documentation, la plus utile de toute la carte pour un acheteur : tout ce qui tourne en local fonctionne partout ; tout ce qui vit dans le nuage d'Anthropic (sessions cloud, mobile, Slack, Routines, Remote Control, Chrome, usage de l'ordinateur, artefacts) exige un compte claude.ai et n'existe chez aucun revendeur ; certaines capacités serveur varient (la recherche web est absente sur Bedrock, le mode rapide et l'Advisor n'existent que chez Anthropic) <a class="ref" href="#S2">[S2]</a>. Le premier canal reçoit chaque fonction en premier ; les revendeurs en portent un sous-ensemble qui grandit.</p>
+
+<h2 id="4-o-vit-le-contexte-un-dossier-ou-un-compte">4. Où vit le contexte : un dossier ou un compte</h2>
+<p>La distinction la plus utile n'est pas une question de fonctions. Une session Claude Code locale est <strong>ancrée dans un dossier</strong> : le dossier porte les consignes permanentes dans <code>CLAUDE.md</code>, les réglages et les skills sous <code>.claude/</code>, l'historique git, les outils installés. Changez de dossier, vous changez de contexte. Une session de chat ou une session cloud est <strong>ancrée dans un compte</strong> : mémoire, préférences, projets, skills de compte et connecteurs se chargent au départ de chaque conversation sans qu'on le demande ; ce qui ne survit pas, c'est le disque de travail, un conteneur effacé à la fin de la session. Un <code>CLAUDE.md</code> n'y est lu que si un dépôt ou un dossier est attaché, parce que le mécanisme a besoin d'un répertoire de départ.</p>
+<p>D'où une règle simple. Mettez ce qui concerne un projet dans un <code>CLAUDE.md</code> à la racine de son dépôt : il s'appliquera à l'identique dans un terminal, une session cloud, une Routine ou un processus de l'Agent SDK. Mettez ce qui vous concerne, quel que soit le projet, dans la mémoire du compte ou dans une skill : cela vous suivra sur le chat, le bureau, le téléphone et l'extension. Les deux mécanismes se complètent ; seule l'ancre par défaut diffère.</p>
+
+<h2 id="5-qui-paie-o-vont-les-donn-es">5. Qui paie, où vont les données</h2>
+<p>Un <strong>abonnement</strong> achète un ensemble de surfaces sous des fenêtres d'usage glissantes, avec un dépassement mesuré en option. La <strong>consommation</strong> achète des jetons, à des tarifs publics par million, avec le traitement par lots à moitié prix et, chez les revendeurs, une prime de 10 % pour les points de terminaison régionaux <a class="ref" href="#S4">[S4]</a>. Le crédit de « sessions cloud » offert en septembre 2026 illustre la logique : 100 $ pour Pro, 250 $ pour Max, valable jusqu'au 4 novembre, qui « covers cloud sessions only » et ne couvre ni les projets, ni les Routines, ni le chat, ni les sessions authentifiées par clé API ou via un nuage tiers ; après épuisement, les sessions cloud comptent dans les limites du plan « just like local sessions » <a class="ref" href="#S6">[S6]</a>. Ce n'était pas un produit nouveau, mais la subvention d'un seul chemin de déclenchement.</p>
+<p>Pour les données, la ligne passe entre conditions grand public et conditions commerciales, non entre surfaces. Sur Free, Pro et Max, chaque utilisateur choisit si ses conversations peuvent servir à améliorer les modèles, le choix couvre Claude Code, et la conservation suit : cinq ans si oui, trente jours sinon. Sous conditions commerciales (Team, Enterprise, API, nuages tiers), Anthropic n'entraîne pas ses modèles sur les données, la conservation est de trente jours, et la rétention nulle est réservée aux comptes qualifiés <a class="ref" href="#S7">[S7]</a>. Chez les revendeurs, la télémétrie vers Anthropic est désactivée par défaut, et les déploiements Foundry hébergés sur Azure gardent invites et réponses dans Azure <a class="ref" href="#S7">[S7]</a>. Les sessions cloud, elles, conservent la transcription chez Anthropic pour pouvoir être reprises de n'importe quel appareil.</p>
+
+<h2 id="6-choisir-en-quatre-questions">6. Choisir en quatre questions</h2>
+<ol><li><strong>Le travail a-t-il besoin de votre machine ?</strong> Fichiers locaux, outils installés, réseau d'entreprise, navigateur connecté : une surface locale de Claude Code, l'extension Chrome ou le complément Office <a class="ref" href="#S3">[S3]</a>.</li><li><strong>Doit-il survivre à la fermeture de l'ordinateur ?</strong> Une session cloud, une Routine, Claude Tag ou, pour qui construit une application, Managed Agents ; tous exigent le canal direct d'Anthropic <a class="ref" href="#S2">[S2]</a>.</li><li><strong>Qui le déclenche ?</strong> Une personne en conversation : l'application ou une session cloud. Un horaire ou un événement : une Routine (abonnement) ou un déploiement planifié de Managed Agents (API). Votre propre code : l'API, l'Agent SDK ou le mode non interactif de Claude Code avec une clé API.</li><li><strong>Qui doit être facturé, et où les données doivent-elles rester ?</strong> Votre facture cloud et vos régions : Bedrock, l'Agent Platform ou Foundry, en acceptant le sous-ensemble de fonctions <a class="ref" href="#S2">[S2]</a>. Sinon, un abonnement pour les personnes et une clé API pour les machines.</li></ol>
+<p><strong>Limites.</strong> Cette version condensée reprend l'entrée anglaise sans en reproduire les vingt-sept sources ni le détail des plans ; elle a été écrite le même jour, d'après les mêmes pages. Les prix sont les prix catalogue en dollars, hors taxes et négociation. Plusieurs fonctions décrites sont en bêta ou en avant-première, et la carte doit être relue sur les pages vivantes avant toute décision d'achat.</p>
+
+<h2 id="7-sources">7. Sources</h2>
+
+<ol class="srclist">
+<li id="S1"><span class="tag">S1</span> Entrée principale de ce chapitre (anglais). « One model, many doors: a dated map of every way to reach Claude in October 2026, and what actually differs between them », KB-AI entry 2, avec ses vingt-sept sources typées et datées. <a href="https://www.cd-consulting-rd.be/KB-AI/7e5c.html" rel="noopener noreferrer" target="_blank">https://www.cd-consulting-rd.be/KB-AI/7e5c.html</a> — consultée le 11 octobre 2026.</li>
+<li id="S2"><span class="tag">S2</span> Officiel (documentation de l'éditeur). Anthropic, <em>Feature availability</em>, documentation Claude Code. <a href="https://code.claude.com/docs/en/feature-availability" rel="noopener noreferrer" target="_blank">https://code.claude.com/docs/en/feature-availability</a> — consultée le 11 octobre 2026.</li>
+<li id="S3"><span class="tag">S3</span> Officiel (documentation de l'éditeur). Anthropic, <em>Platforms and integrations</em>, documentation Claude Code. <a href="https://code.claude.com/docs/en/platforms" rel="noopener noreferrer" target="_blank">https://code.claude.com/docs/en/platforms</a> — consultée le 11 octobre 2026.</li>
+<li id="S4"><span class="tag">S4</span> Officiel (grille tarifaire de l'éditeur). Anthropic, <em>Claude plans and pricing</em>. <a href="https://claude.com/pricing" rel="noopener noreferrer" target="_blank">https://claude.com/pricing</a> — consultée le 11 octobre 2026.</li>
+<li id="S5"><span class="tag">S5</span> Officiel (annonce de l'éditeur). Anthropic, « Claude Cowork and chat are now one Claude », blog Claude, 16 septembre 2026. <a href="https://claude.com/blog/cowork-is-now-claude" rel="noopener noreferrer" target="_blank">https://claude.com/blog/cowork-is-now-claude</a> — consultée le 11 octobre 2026.</li>
+<li id="S6"><span class="tag">S6</span> Officiel (centre d'aide de l'éditeur). Anthropic, <em>Cloud sessions bonus credit promotion</em>, Claude Help Center. <a href="https://support.claude.com/en/articles/17152539-cloud-sessions-bonus-credit-promotion" rel="noopener noreferrer" target="_blank">https://support.claude.com/en/articles/17152539-cloud-sessions-bonus-credit-promotion</a> — consultée le 11 octobre 2026.</li>
+<li id="S7"><span class="tag">S7</span> Officiel (documentation de l'éditeur). Anthropic, <em>Data usage</em>, documentation Claude Code. <a href="https://code.claude.com/docs/en/data-usage" rel="noopener noreferrer" target="_blank">https://code.claude.com/docs/en/data-usage</a> — consultée le 11 octobre 2026.</li>
+</ol>
+
+
+    <footer lang="en">
+      <p>This text is © CD Consulting R&amp;D and licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener noreferrer" target="_blank">CC BY-NC-ND 4.0</a> (attribution, non-commercial, no derivatives). Quoted figures and sentences remain the property of their publishers, principalement Anthropic PBC pour sa documentation, son centre d’aide et ses annonces.</p>
+      <p class="backlinks"><a href="./">← KB-AI</a> · <a href="../index.html">CD Consulting R&amp;D</a></p>
+    </footer>
+  </main>
+  <script>(function(){var b=document.getElementById("theme");b.addEventListener("click",function(){var r=document.documentElement;var cur=r.getAttribute("data-theme");var sys=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";var now=(cur||sys)==="dark"?"light":"dark";r.setAttribute("data-theme",now);try{localStorage.setItem("kb-theme",now);}catch(e){}});})();</script>
+</body>
+</html>

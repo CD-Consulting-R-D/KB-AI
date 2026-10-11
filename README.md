@@ -3,7 +3,7 @@
 Chapitre **KB-AI** — Computer science & AI knowledge base — de la Knowledge Base **CD Consulting R&D**
 (organisation GitHub [CD-Consulting-R-D](https://github.com/CD-Consulting-R-D)).
 
-**Statut : en ligne depuis le 09/09/2026 — 3 entrées servies** (`c8d1.html`, résumé critique du 2026 AI Barometer BE ; `7e5c.html`, publiée le 2026-10-11 : One model, many doors — carte datée des canaux d'accès à Claude ; `d2f8.html`, publiée le 2026-10-11 : Assistant or agent? — la frontière assistant/agent après la fusion chat/Cowork). Chapitre : informatique et intelligence artificielle.
+**Statut : en ligne depuis le 09/09/2026 — 3 entrées servies** (`c8d1.html`, résumé critique du 2026 AI Barometer BE ; `7e5c.html`, publiée le 2026-10-11 : One model, many doors — carte datée des canaux d'accès à Claude ; `d2f8.html`, publiée le 2026-10-11 : Assistant or agent? — la frontière assistant/agent après la fusion chat/Cowork) **et 1 compagnon** (`b4e1.html`, 2026-10-11 : version française condensée de `7e5c`). Chapitre : informatique et intelligence artificielle.
 
 ## Rôle
 
