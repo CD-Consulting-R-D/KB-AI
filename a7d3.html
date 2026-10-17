@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Summit Barcelona 2026: agents into production, security as the condition, sovereignty as resilience — CD Consulting R&amp;D</title>
+  <meta name="description" content="The second AI Summit Barcelona announced over 10,000 attendees and 169 sessions. What was reported from the stages: agents moving into production under identity, permission and audit controls; security as a condition (an agent&#x27;s blast radius); sovereignty debated between European infrastructure and buyer resilience; the Catalan one-billion-euro AI strategy. Two counterpoints: an overwhelmed venue and a protest against data-centre megaprojects.">
+  <style>
+/* Mixed edition: light by default, dark when the system asks for it, and a manual switch
+   (remembered in this browser) that overrides the system in both directions. The two
+   palettes are those already used in this Knowledge Base: the light one of the chapter
+   indexes, the nocturnal one of entry 1. */
+:root{
+  color-scheme:light dark;
+  --bg:#f7f6f3; --panel:#ffffff; --panel-2:#efede8; --quote:#f1efea; --code:#efede8;
+  --ink:#1a1a1a; --ink-strong:#0e0e0e; --muted:#555c66; --rule:#ddd8cf; --rule-soft:#e8e4dc;
+  --accent:#3d6478; --accent-hover:#274a5c; --sel:#d9e4ec; --hover:#f3f1ec; --scroll:#c9c4ba;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+    --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+    --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a; --scroll:#39424f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+  --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+  --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a; --scroll:#39424f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{max-width:900px;margin:0 auto;padding:56px 24px 104px}
+::selection{background:var(--sel);color:var(--ink-strong)}
+h1{font-family:var(--serif);font-size:clamp(27px,4.4vw,42px);line-height:1.15;font-weight:600;letter-spacing:-.015em;
+  margin:0 0 18px;color:var(--ink-strong);padding-bottom:22px;border-bottom:2px solid var(--accent);text-align:center}
+h2{font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:-.01em;color:var(--ink-strong);
+  margin:60px 0 14px;padding-top:26px;border-top:1px solid var(--rule);scroll-margin-top:16px}
+h2#contents{border-top:none;padding-top:0;margin-top:42px}
+h3{font-size:18px;font-weight:600;margin:38px 0 10px;letter-spacing:-.005em;font-family:var(--serif);color:var(--ink-strong);scroll-margin-top:16px}
+p{margin:0 0 17px;max-width:72ch}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
+a.ref{font-family:var(--sans);font-size:.82em;text-decoration:none;white-space:nowrap}
+strong{font-weight:650;color:var(--ink-strong)}
+ul,ol{max-width:72ch;padding-left:24px;margin:0 0 19px}
+li{margin-bottom:10px}
+li::marker{color:var(--muted)}
+h2#contents + ol{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px 22px 22px 46px;max-width:none;font-size:15px}
+h2#contents + ol li{margin-bottom:8px}
+h2#contents + ol li::marker{color:var(--accent)}
+code{font-family:var(--mono);font-size:.87em;background:var(--code);color:var(--ink);padding:2px 6px;border-radius:4px;word-break:break-word;border:1px solid var(--rule-soft)}
+.scroll{overflow-x:auto;margin:26px 0 30px;border:1px solid var(--rule);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.55}
+thead th{background:var(--panel-2);color:var(--ink-strong);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:650;border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hover)}
+ol.srclist{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px 24px 22px 24px;max-width:none;list-style:none}
+ol.srclist li{margin-bottom:15px;line-height:1.55;font-size:14px;padding-left:52px;position:relative}
+ol.srclist li:last-child{margin-bottom:0}
+ol.srclist li .tag{position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--rule);border-radius:4px;padding:1px 5px}
+ol.srclist a{font-family:var(--mono);font-size:12.5px;word-break:break-all}
+*{scrollbar-color:var(--scroll) var(--bg)}
+.mark{font-family:var(--sans);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;text-align:center}
+nav.crumbs{font-family:var(--sans);font-size:12.5px;text-align:center;color:var(--muted);margin-bottom:26px}
+nav.crumbs a{color:var(--accent)}
+.cartouche{font-family:var(--sans);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:34px;padding-bottom:24px;border-bottom:1px solid var(--rule-soft)}
+.standfirst{font-family:var(--serif);font-size:16px;color:var(--muted);text-align:center;margin:0 0 8px;max-width:none}
+.meta-line{font-family:var(--sans);font-size:13px;color:var(--muted);text-align:center;margin-bottom:38px;max-width:none}
+.theme{position:fixed;top:14px;right:14px;font-family:var(--sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--panel);color:var(--muted);border:1px solid var(--rule);border-radius:99px;padding:6px 12px;cursor:pointer}
+.theme:hover{color:var(--accent);border-color:var(--accent)}
+footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6}
+footer p{margin-bottom:14px;max-width:none}
+footer .backlinks{text-align:center;margin-top:34px;font-size:14px}
+@media (max-width:640px){.wrap{padding:34px 16px 68px}body{font-size:16px}h2#contents + ol{padding-left:38px}.theme{top:8px;right:8px}}
+@media print{html,body{background:#fff;color:#000;font-size:11pt}.wrap{max-width:none;padding:0}.theme{display:none}
+  h1,h2,h3,strong{color:#000}h1{border-bottom-color:#000}h2{border-top-color:#999;page-break-after:avoid}a{color:#000}
+  code,.scroll,h2#contents + ol,ol.srclist{background:#fff;border-color:#bbb;color:#000}thead th{background:#eee;color:#000}
+  .scroll{page-break-inside:avoid;overflow:visible}table{min-width:0;font-size:9pt}td,th{border-bottom-color:#ccc}}
+  
+/* Start-here primer for the non-specialist reader (editorial charter, rule 1) */
+aside.primer{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:18px 22px;margin:8px 0 34px;font-size:15.5px;line-height:1.6;max-width:none}
+aside.primer .primer-title{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px;max-width:none}
+aside.primer p{margin:0 0 10px;max-width:72ch}
+aside.primer p:last-child{margin-bottom:0}
+aside.primer em{font-style:italic;color:var(--ink)}
+@media print{aside.primer{background:#fff;border-color:#bbb}}
+.enjeu{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--accent);text-align:center;margin:0 0 8px}
+
+:root{--accent:#4a4a8c;--accent-hover:#36366b;--kb-c:#4a4a8c;
+  --kb-forme:none;--kb-fond:transparent;--kb-bord:2px solid var(--kb-c);--kb-rayon:50%;
+  --kb-filet:repeating-linear-gradient(90deg,var(--kb-c) 0 2px,transparent 2px 6px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#a0a0dc;--accent-hover:#c0c0ec;--kb-c:#a0a0dc}}
+:root[data-theme="dark"]{--accent:#a0a0dc;--accent-hover:#c0c0ec;--kb-c:#a0a0dc}
+h1{border-bottom-color:transparent;position:relative}
+h1::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-2px;
+  width:170px;height:4px;background:var(--kb-filet)}
+.mark::before{content:"";display:inline-block;box-sizing:border-box;width:10px;height:10px;
+  vertical-align:1px;margin-right:11px;background:var(--kb-fond);clip-path:var(--kb-forme);
+  border:var(--kb-bord);border-radius:var(--kb-rayon)}
+  </style>
+  <script>(function(){try{var t=localStorage.getItem("kb-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+</head>
+<body>
+  <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">Light / Dark</button>
+  <main class="wrap">
+    <p class="mark">CD Consulting R&amp;D</p>
+    <nav class="crumbs"><a href="../index.html">Home</a> · <a href="./">KB-AI</a> · Entry 6</nav>
+    <p class="cartouche">KB-AI · Entry 6 · Published 2026-10-17 · Version 1</p>
+<h1>AI Summit Barcelona 2026: agents into production, security as the condition, sovereignty as resilience</h1>
+<p class="standfirst">A synthesis of the second AI Summit Barcelona (22-23 September 2026) from the official programme, press reports and two participants' accounts: seven threads, the Catalan AI strategy, two counterpoints, and five lessons for a company that runs AI.</p>
+<p class="enjeu">If you buy, build or govern AI systems in a company and want to know what the 2026 conference season is telling you, this is what the largest AI summit in southern Europe said about agents in production, security, sovereignty and cost, where the speakers disagreed, and what the organiser's figures do not show.</p>
+<p class="meta-line">Method: web research on 17 October 2026; the 169-session programme read in full; 19 sources typed and dated; the status of each fact declared in section 7. No session was watched.</p>
+<aside class="primer">
+<p class="primer-title">Start here — if the subject is new to you</p>
+<p>Every autumn, a few large conferences set the vocabulary that companies will use for the next year when they talk about artificial intelligence. The AI Summit Barcelona, held on 22 and 23 September 2026, was the largest of its kind in southern Europe this year: more than two hundred speakers from the big model vendors, banks, ports, hospitals and start-ups, talking to an audience of buyers, builders and public officials.</p>
+<p>It matters because what gets said on those stages, and what gets repeated afterwards, is what a board or an IT department will hear from consultants and vendors in the months that follow. Knowing what was actually said, and by whom, is a way of checking the sales pitch against its source.</p>
+<p>This entry reconstructs the summit from its programme, the press and two independent accounts, sorts what was said into seven threads, adds the Catalan government's billion-euro plan, keeps two counterpoints that the organiser's figures leave out, and ends with five lessons for a company that runs AI systems.</p>
+</aside>
+<h2 id="contents">Contents</h2>
+<ol>
+<li><a href="#1-the-summit-on-one-page">1. The summit on one page</a></li>
+<li><a href="#2-the-event">2. The event</a></li>
+<li><a href="#3-what-was-said-seven-threads">3. What was said: seven threads</a></li>
+<li><a href="#4-counterpoints">4. Counterpoints</a></li>
+<li><a href="#5-what-this-changes-for-a-company-that-runs-ai">5. What this changes for a company that runs AI</a></li>
+<li><a href="#6-what-is-missing">6. What is missing</a></li>
+<li><a href="#7-limits-of-this-note">7. Limits of this note</a></li>
+<li><a href="#8-sources">8. Sources</a></li>
+</ol>
+
+<h2 id="1-the-summit-on-one-page">1. The summit on one page</h2>
+<p>The second AI Summit Barcelona took place on 22 and 23 September 2026 at the World Trade Center Barcelona, under the slogan "Beyond Theory. AI in Action". The organiser, AI Events Barcelona, announced more than 10,000 attendees and more than 200 speakers, against 1,200 to 1,500 attendees and 86 speakers at the first edition in 2025; six stages carried 169 programmed sessions in seven tracks, inside an "AI Week" of some fifty satellite events and a 500-person hackathon on agent-oriented architectures <a class="ref" href="#S1">[S1]</a> <a class="ref" href="#S2">[S2]</a> <a class="ref" href="#S3">[S3]</a> <a class="ref" href="#S9">[S9]</a>.</p>
+<p>Three threads dominate what was reported from the stages.</p>
+<p><strong>From pilots to production.</strong> Agents, that is systems that chain tasks, query tools and act with growing autonomy, were the central subject, but the question had moved: not "what can a model generate?" but "which task can it take over in the organisation, and under which controls?". Identity, permissions, supervision, traceability, an inventory of systems, evaluation before and after deployment: governance was described as entering daily operations <a class="ref" href="#S10">[S10]</a> <a class="ref" href="#S11">[S11]</a>.</p>
+<p><strong>Security as the condition.</strong> In the opening keynote, Chema Alonso (Cloudflare) argued that AI capabilities advance faster than the control measures; Eduard Singer proposed the notion of an agent's <strong>"blast radius"</strong> (autonomy × privilege × reach) and the rule that "a document is not an authority"; a whole panel dealt with deepfakes and detection; the Paris transport operator RATP presented how it governs its agents <a class="ref" href="#S12">[S12]</a> <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>.</p>
+<p><strong>Sovereignty, debated without unanimity.</strong> A debate titled "Sovereign AI or Surrender?" and several keynotes opposed the case for European infrastructure (Airbus Defence and Space) to a more pragmatic line: do not chase parity with frontier models but build specialised ones (Barcelona Supercomputing Center), and, for buyers, aim at <strong>resilience</strong> (several models, several providers, contractual exit rights, clarity on where data sits) rather than a "full-stack" sovereignty that nobody has <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>.</p>
+<p>On the political side, the Catalan government used the summit as the showcase of its <strong>Catalonia AI 2030 Strategy</strong> (one billion euros mobilised by 2030, 88 actions, eight axes), presented at the opening and endorsed by President Salvador Illa at the closing, who called for "an ethical, transparent and balanced deployment" of AI <a class="ref" href="#S9">[S9]</a> <a class="ref" href="#S16">[S16]</a> <a class="ref" href="#S17">[S17]</a> <a class="ref" href="#S18">[S18]</a>.</p>
+<p>Two counterpoints temper the picture: a <strong>venue that was overwhelmed</strong> (queues of more than fifty minutes, full rooms, workshops designed for twenty people receiving more than a hundred), acknowledged by the organiser, who announced a 2027 edition on several sites; and a <strong>protest</strong> by some 140 social and environmental organisations outside the venue, demanding a moratorium on data-centre megaprojects <a class="ref" href="#S9">[S9]</a> <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a> <a class="ref" href="#S19">[S19]</a>.</p>
+
+<h2 id="2-the-event">2. The event</h2>
+<div class="scroll"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td><strong>Name</strong></td><td>AI Summit Barcelona 2026 (AISB), second edition</td></tr>
+<tr><td><strong>Dates and venue</strong></td><td>22–23 September 2026, World Trade Center Barcelona (Port Vell)</td></tr>
+<tr><td><strong>Organiser</strong></td><td>AI Events Barcelona — founders Guillaume Rostand (CEO, also president of French Tech Barcelona), Adam Hruska, Tanguy Wyncker <a class="ref" href="#S3">[S3]</a> <a class="ref" href="#S4">[S4]</a></td></tr>
+<tr><td><strong>Institutional support</strong></td><td>Generalitat de Catalunya, World Trade Center Barcelona ("Strategic Host Partner"), Port of Barcelona <a class="ref" href="#S5">[S5]</a> <a class="ref" href="#S6">[S6]</a></td></tr>
+<tr><td><strong>Sponsors named</strong></td><td>Google Cloud, AWS, HP, ElevenLabs, McKinsey &amp; Company, NTT Data, Anthropic, Tenth Revolution Group, Skyscanner, Tether, Nebius, JetBrains, Dataiku, Nestlé, Danone, Banco de España, Barcelona Supercomputing Center (partial list) <a class="ref" href="#S1">[S1]</a> <a class="ref" href="#S6">[S6]</a></td></tr>
+<tr><td><strong>Slogan</strong></td><td>"Beyond Theory. AI in Action" <a class="ref" href="#S1">[S1]</a> <a class="ref" href="#S3">[S3]</a></td></tr>
+<tr><td><strong>Format</strong></td><td>6 stages (Main Stage, Auditorium, Panel Stage, Demo Room, two Workshop Rooms, plus Sponsor Rooms); 169 programmed sessions: 57 keynotes, 33 demos, 22 workshops, 21 panels, 16 use cases, 12 fireside chats, 4 debates, 4 sponsor sessions <a class="ref" href="#S2">[S2]</a></td></tr>
+<tr><td><strong>Tracks</strong></td><td>AI For Builders (43), AI For Today (30), AI For Tech (23), AI For Tomorrow (20), AI Foundations (19), AI For Good (16), AI For Growth (9) <a class="ref" href="#S2">[S2]</a></td></tr>
+<tr><td><strong>Attendance announced</strong></td><td>more than 10,000 attendees (organiser's figure; 1,200 to 1,500 in 2025 at the Glovo campus); more than 50 % from abroad according to the organiser; more than 200 speakers (86 in 2025) <a class="ref" href="#S9">[S9]</a> <a class="ref" href="#S10">[S10]</a> <a class="ref" href="#S11">[S11]</a></td></tr>
+<tr><td><strong>Tickets</strong></td><td>two-day passes from €365–375 including VAT, no single-day ticket; Platinum pass around €1,330 <a class="ref" href="#S1">[S1]</a> <a class="ref" href="#S3">[S3]</a></td></tr>
+<tr><td><strong>Around it</strong></td><td>AI Week Barcelona (16–23 or 18–27 September depending on the source), about 50 satellite events; hackathon HackBarna (second edition, 500 participants, Norrsken House, 19–20 September) on agent-oriented architectures <a class="ref" href="#S1">[S1]</a> <a class="ref" href="#S3">[S3]</a> <a class="ref" href="#S4">[S4]</a></td></tr>
+<tr><td><strong>Afterwards</strong></td><td>every session on replay through a paid "Digital Pass" <a class="ref" href="#S6">[S6]</a>; a 2027 edition announced as "more ambitious and international", on several sites or in a much larger single venue, the Fira being ruled out <a class="ref" href="#S9">[S9]</a> <a class="ref" href="#S11">[S11]</a></td></tr>
+</tbody></table></div>
+<p><strong>Speakers put forward by the organiser</strong>: Salvador Illa (President of the Generalitat), Chema Alonso (Cloudflare), Howard Wright (Nvidia), Jaime De Mora (Microsoft), Ilyass El Mansouri (OpenAI), Julia Hernandez (Anthropic Spain), Steffen Fuchs (McKinsey), Pablo Rodriguez (Google), Luc Julia (co-creator of Siri), Laura Gilbert (Tony Blair Institute), Ignasi Belda (Banco de España, founder of the Spanish AI supervision agency AESIA), Diego Perino (BSC AI Institute), Martin C. Syms (BlackRock Aladdin), Nouamane Tazi (Hugging Face), Orsi Nagy (European Commission), Jesús Barrasa (Neo4j), John Roche (HP) <a class="ref" href="#S6">[S6]</a> <a class="ref" href="#S7">[S7]</a>.</p>
+
+<h2 id="3-what-was-said-seven-threads">3. What was said: seven threads</h2>
+
+<h3 id="3-1-from-pilots-to-production-agents-and-what-they-require">3.1 From pilots to production: agents, and what they require</h3>
+<p>The programme is saturated with agents: the keynote "The art of the possible: Agentic AI" (Google Cloud), the debate "Agents: real platform shift or overhyped demo?", the workshops "Build a live AI voice agent in 60 minutes", "From Prototype to Production with Amazon Bedrock AgentCore" and "Building Agents with Google Antigravity", the use cases "Engineering Production Agents: the model is the easy part", "Agents That Touch Real Money" (Qonto) and "RATP Group: Governing AI Agents" <a class="ref" href="#S2">[S2]</a>.</p>
+<p>The trade press sums up the underlying message: experimenting is easy; running AI in critical operations requires <strong>infrastructure, data governance and continuous evaluation</strong>. An agent connected to corporate applications needs <strong>identity, authorisation, monitoring and audit</strong>, so that the organisation knows which data a system uses and which operations it may perform. Organisations must choose what to scale on business metrics (time saved, effective automation, productivity, customer service), and most of the effort lies outside the model: connecting sources, reorganising processes, setting controls, deciding when a person intervenes <a class="ref" href="#S10">[S10]</a>.</p>
+<p>Two ideas recur in the participants' accounts:</p>
+<ul><li><strong>Cost is measured per outcome, not per token.</strong> Jaime De Mora (Microsoft): per-token pricing is the wrong unit, what counts is the cost per successful outcome; John Roche (HP): inference costs fall but agentic token volumes explode; Bernard Kavanagh (TileDB): route novel problems to frontier models and repeated cases to small models — hybrid routing is becoming the norm <a class="ref" href="#S14">[S14]</a>.</li><li><strong>Review is the new bottleneck.</strong> When agents write code faster than anyone can read it, validating the output becomes the first constraint (26 % of developers and 26 % of engineering leaders in the Qodo 2026 report cited by a participant); defining what good code is remains human work <a class="ref" href="#S13">[S13]</a>.</li></ul>
+<p>In retail, Nestlé and Bonpreu expect "agentic capabilities" taking customer-facing decisions with little human intervention <strong>within less than two years</strong> <a class="ref" href="#S9">[S9]</a>.</p>
+<h3 id="3-2-security-faster-than-the-controls">3.2 Security: "faster than the controls"</h3>
+<ul><li><strong>Opening keynote, 22 September, Main Stage</strong> — Chema Alonso (vice-president, Cloudflare), "Hacking and Cybersecurity in the Age of AI": machine learning has transformed vulnerability identification and security testing; capabilities advance <strong>faster than the control measures are put in place</strong>; risks cited: algorithmic bias, data leaks, system manipulation, unethical behaviour; conclusion: AI is indispensable to digital protection, but companies must thoroughly review their oversight and accountability mechanisms <a class="ref" href="#S12">[S12]</a>.</li><li><strong>Keynote 40, 23 September</strong> — Eduard Singer (neusinger.ai): an agent's danger is its <strong>blast radius</strong> = autonomy × privilege × reach. The example that stuck with the room: an agent asked to draft an out-of-office reply reads a malicious e-mail hidden in the inbox and sends a resignation letter. Rules drawn: <strong>treat documents as untrusted, separate proposal from authority</strong> (data is not an authorisation), tier human oversight by risk <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>.</li><li><strong>Panel 17</strong> — "AI vs AI: Deepfakes, Detection &amp; the Trust Gap" <a class="ref" href="#S2">[S2]</a>.</li><li><strong>Demo 24</strong> — "Cybercoding in Live Action: Securing a Legacy Application" <a class="ref" href="#S2">[S2]</a>.</li><li><strong>Regulated sectors</strong> — Robin Bradley (Bigspark) estimates that about <strong>80 %</strong> of the effort of an AI project in a UK bank goes to compliance and governance; fireside "AI in Regulated Industries: Booster or Barrier?" <a class="ref" href="#S2">[S2]</a> <a class="ref" href="#S14">[S14]</a>.</li><li><strong>Legal frame</strong> — the transparency obligations of the EU AI Act (disclosure, labelling of synthetic media, deepfakes) have applied since <strong>2 August 2026</strong>: a voice agent must say it is a machine; the "Digital Omnibus" package postponed the high-risk obligations to December 2027 (August 2028 for embedded systems); providers of large general-purpose models had to file their systemic-risk evaluations with the AI Office by 15 September; a demo presented the Spanish AI Act sandbox <a class="ref" href="#S1">[S1]</a> <a class="ref" href="#S2">[S2]</a> <a class="ref" href="#S13">[S13]</a>.</li></ul>
+<h3 id="3-3-sovereignty-european-infrastructure-or-resilience">3.3 Sovereignty: European infrastructure or resilience?</h3>
+<p><strong>Debate 3, "Sovereign AI or Surrender?"</strong> (23 September, Auditorium, seven participants including Justin Strharsky), the keynotes "AI to keep Europe Safe" (Roser Roca Toha, Airbus Defence and Space), "Tokens, Latency, Sovereignty" (John Roche, HP) and "Private AI Exchange", the workshop "Not your weights, not your brain!" (Pedro Cuenca) and the panel "From BSC to Brussels: Europe's Supercomputing Bet on AI" (Diego Perino) carried the subject <a class="ref" href="#S2">[S2]</a>.</p>
+<p>The positions reported:</p>
+<ul><li><strong>European infrastructure</strong>: Europe cannot defend itself with algorithms it cannot audit, hosted on non-European clouds, governed by non-European law (Roca Toha, Mike Korba) <a class="ref" href="#S14">[S14]</a>.</li><li><strong>Specialised models rather than parity</strong>: Diego Perino (BSC AI Institute) holds that Europe should not chase parity with frontier models but build specialised models and their ecosystem for science, public administration and industry <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>.</li><li><strong>Resilience</strong>: Justin Strharsky (Longview Institute) — "full-stack" sovereignty is an illusion that nobody has, the United States included; what matters to a buyer is several models, several providers, contractual exit rights and clarity on where data sits <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>.</li><li><strong>Practice</strong>: Pedro Romera (CTT Express) says his firm uses US models hosted in EU regions <a class="ref" href="#S14">[S14]</a>.</li></ul>
+<p>A participant notes that the speakers disagreed with each other, and that European AI funding remains as much a matter of mindset as of economics <a class="ref" href="#S14">[S14]</a>.</p>
+<h3 id="3-4-data-and-memory-as-the-durable-asset">3.4 Data and memory as the durable asset</h3>
+<p>"The model is not the moat": the advantage lies in proprietary data, learning loops from corrections, governance and institutional knowledge (Alex Booker, Mastra; Martin C. Syms, BlackRock). Jesús Barrasa (Neo4j): agents fail less because of model limits than because <strong>enterprise data has no explicit meaning</strong>; a shared knowledge layer (ontologies, graphs) makes cheaper models more accurate (use case "The Knowledge Layer: thinner agents on a smarter substrate"). Nouamane Tazi (Hugging Face) and Astghik Zakharyan debated whether open-weight models will erode frontier margins <a class="ref" href="#S2">[S2]</a> <a class="ref" href="#S14">[S14]</a>.</p>
+<p>A participant draws an organisational lesson: everyone builds private context for their own agents and the organisation gains nothing; knowledge needs layers (company, team, person) that current tools cannot select by task <a class="ref" href="#S13">[S13]</a>.</p>
+<h3 id="3-5-work-training-the-human">3.5 Work, training, the human</h3>
+<p>Debate 2, "Will AI replace half of knowledge workers by 2030?"; keynote "Beyond Upskilling: rebuilding identity in the age of AI"; panel "Who's Really Deciding? Human Agency in the Age of AI"; keynote "The Wrong Question: Why Human-in-the-Loop Is No Longer Enough" (Alia Zafar); panel "Healing or Hooking? AI and Mental Health &amp; Wellbeing"; fireside "What's Left to Teach When AI Already Knows the Answer?" <a class="ref" href="#S2">[S2]</a>. Anna Thomas (Institute for the Future of Work) describes an "efficiency trap"; Michael Pester and Isabella Loaiza (Revelio Labs) debate human-in-the-loop approval, citing METR's research on developer productivity; Marvyn Halfon (Sabda) warns of the "neural disconnection" that comes with delegating cognitive tasks to opaque tools <a class="ref" href="#S9">[S9]</a> <a class="ref" href="#S14">[S14]</a>. A developer-participant notes the sadness of those who no longer type their code, and answers that problem-solving has moved up a level: "a change in degree" (an order of magnitude more per person), not in kind <a class="ref" href="#S13">[S13]</a>.</p>
+<h3 id="3-6-the-bubble">3.6 The bubble</h3>
+<p>Debate 4, "The 2027 Crash: Is AI the New Dot-Com Bubble?": Oriol Juncosa (Plus Partners) and Roger Almuni (Next Tier Ventures) argue that current valuations are more grounded than in 1999; the keynote "SaaSApocalypse in the era of AI Agent" (Mike Korba) and the fireside "What AI Companies Actually Charge For" raise the shift from per-seat to per-outcome pricing — hard to measure for research, and so far contradicted by aggregate software spending <a class="ref" href="#S2">[S2]</a> <a class="ref" href="#S14">[S14]</a>.</p>
+<h3 id="3-7-catalonia-strategy-port-supercomputer">3.7 Catalonia: strategy, port, supercomputer</h3>
+<ul><li><strong>Catalonia AI 2030 Strategy</strong> — opening of 22 September by Albert Tort (Secretary of Telecommunications and Digital Transformation) and Maria Galindo (Secretary for Digital Policies): <strong>one billion euros</strong> mobilised by 2030, <strong>88 actions</strong> of which 26 are priorities (€870 million, mostly public), <strong>eight axes</strong> (infrastructure; talent; research; AI in business; public sector; ethics, regulation and guarantees; digital society; global promotion of Catalan AI). Measures cited: €60 million of administrative transformation (up to 20 % more operational efficiency, 40 % shorter processing times, 200 public services, 30,000 public workers trained), a <strong>sovereign public cloud</strong> of €120 million, 250 more AI students by 2030, support for an AI "gigafactory" bid at Móra la Nova. The strategy was announced on 10 November 2025 and approved that month; the summit was its showcase. Stated ambition: make Catalonia a digital gateway to southern Europe rather than a passive market <a class="ref" href="#S9">[S9]</a> <a class="ref" href="#S16">[S16]</a> <a class="ref" href="#S17">[S17]</a> <a class="ref" href="#S18">[S18]</a>.</li><li><strong>Closing, 23 September, 18:15</strong> — Salvador Illa: technology, and AI in particular, "can drastically improve our lives"; "we are a government that bets on technology and on science"; a call for governance mechanisms guaranteeing an ethical, transparent and balanced deployment aligned with humanist values; applications cited: health, education, security; Catalonia accounts for nearly 20 % of Spain's economy and population; institutional support renewed <a class="ref" href="#S11">[S11]</a> <a class="ref" href="#S17">[S17]</a> <a class="ref" href="#S18">[S18]</a>.</li><li><strong>Port of Barcelona</strong> — keynote by David Serral (director of information systems): a "toolbox" for AI projects (open data, standalone 5G network, sandbox, agreements with the BSC and the AI Factory); BlueTechPort panel on responsible AI in the blue economy <a class="ref" href="#S5">[S5]</a> <a class="ref" href="#S9">[S9]</a>.</li><li><strong>Context</strong> — MareNostrum 5 (BSC) receives a €129 million upgrade; IBM's Global Location Trends report ranks Barcelona first in the EU and third worldwide for attracting foreign AI investment projects; the Catalan agency Acció puts the regional AI sector at €2.155 billion of turnover, some 500 companies and 14,500 professionals <a class="ref" href="#S1">[S1]</a> <a class="ref" href="#S9">[S9]</a>.</li></ul>
+
+<h2 id="4-counterpoints">4. Counterpoints</h2>
+<p><strong>The logistics.</strong> Two participants who published their accounts agree: queues "like Disneyland", opening keynote missed because of check-in, workshops designed for twenty people receiving more than a hundred, fifteen-minute sessions, most stage time taken by vendor pitches, a "networking" corner of three tables for a €635 Gold ticket <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>. An unsigned opinion piece speaks of "500 % overcapacity" and mass complaints, but supports neither the venue capacity (about 2,000 by its account) nor the complaints with a verifiable source, and its own arithmetic fails (10,000 for 2,000 is 400 %); it reports an apology e-mail from co-founder Adam Hruska offering the recordings and a 2027 pass, without automatic refunds <a class="ref" href="#S19">[S19]</a>. The organiser acknowledges having exceeded its capacity (Guillaume Rostand: "today we are above the capacities we have") and promises for 2027 an edition spread over several sites or in a much larger venue, ruling out the Fira so as not to resemble the Mobile World Congress <a class="ref" href="#S9">[S9]</a> <a class="ref" href="#S10">[S10]</a>.</p>
+<p><strong>The protest.</strong> Some <strong>140 social and environmental organisations</strong> gathered outside the WTC to reject the deployment of data-centre megaprojects and demand a moratorium on current projects; Clàudia Bosch (Setem Catalunya) asked for transparency on resources, investors and public money. The figure and the quote come from a single aggregator citing the Catalan news agency ACN and El Periódico; the original dispatch was not found <a class="ref" href="#S9">[S9]</a>. Inside the programme, the keynote "Greener AI is possible" (Ecosia) and the panel "Energy Resilience &amp; AI Climate Adaptation" addressed the question from within <a class="ref" href="#S2">[S2]</a>.</p>
+<p><strong>The nature of the sources.</strong> Most figures (10,000 attendees, 200 speakers, 50 % from abroad) come from the organiser and are repeated as such by a press largely made of media partners; several articles reproduce the same release. The two independent accounts warn that the statements reported were not verified with the speakers, that many speakers sell the products they talk about, and that some panellists defended assigned positions <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>.</p>
+
+<h2 id="5-what-this-changes-for-a-company-that-runs-ai">5. What this changes for a company that runs AI</h2>
+<p>What the summit brings to the question "do the existing security rules suffice, or is AI a new surface?" fits in five points, all reported from the Barcelona stages:</p>
+<ol><li><strong>The agent is the new surface.</strong> The blast radius (autonomy × privilege × reach) is an operational metric: reducing any of the three factors reduces the risk. The malicious e-mail and the resignation letter are a case of indirect prompt injection — the classical baseline (least privilege, separation of duties) applies, but to an actor that reads everything it is given <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>.</li><li><strong>"A document is not an authority."</strong> Separate what an agent proposes from what it is allowed to do; tier human validation by risk rather than approving everything or nothing <a class="ref" href="#S14">[S14]</a>.</li><li><strong>Identity, permissions, traceability, inventory</strong>: what the trade press retains as the production checklist, and what the AI Act makes progressively mandatory by risk level <a class="ref" href="#S10">[S10]</a>.</li><li><strong>Compliance costs</strong>: 80 % of the effort in a UK bank, according to one speaker — an order of magnitude reported, not verified <a class="ref" href="#S14">[S14]</a>.</li><li><strong>Sovereignty is practised as resilience</strong>: several providers, exit rights, data location, specialised models where they suffice <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>.</li></ol>
+
+<h2 id="6-what-is-missing">6. What is missing</h2>
+<p>No source consulted restores the content of the large vendors' keynotes (OpenAI, Anthropic, Google, Nvidia, Microsoft) beyond their titles; the sessions are on replay behind the paid Digital Pass <a class="ref" href="#S6">[S6]</a>. Any reader who attended, or who buys the replay, will be able to confront this reconstruction with the stages themselves.</p>
+
+<h2 id="7-limits-of-this-note">7. Limits of this note</h2>
+<p>Web research on 17 October 2026, 8 queries, 12 pages read in full or in part. <strong>Status</strong>: <em>official programme</em> = titles, times and speakers as published by the organiser (the "Schedule" page, 169 sessions, read in full) <a class="ref" href="#S2">[S2]</a>; <em>statement</em> = figures and quotes from the organiser or the Catalan government as relayed by the press <a class="ref" href="#S9">[S9]</a> <a class="ref" href="#S10">[S10]</a> <a class="ref" href="#S11">[S11]</a> <a class="ref" href="#S16">[S16]</a> <a class="ref" href="#S17">[S17]</a> <a class="ref" href="#S18">[S18]</a>; <em>independent account</em> = two participants who published their notes and declare that they did not verify the statements with the speakers <a class="ref" href="#S13">[S13]</a> <a class="ref" href="#S14">[S14]</a>; <em>opinion</em> = one unsigned, unsourced article <a class="ref" href="#S19">[S19]</a>. The quotes of Salvador Illa are those relayed by the press, not an official transcript. No session was watched; this note describes what was written about the summit.</p>
+
+<h2 id="8-sources">8. Sources</h2>
+<p>All sources consulted on 17 October 2026.</p>
+<ol class="srclist">
+<li id="S1"><span class="tag">S1</span> Press (preview). Sovereign Magazine, Darie Nani, "AI Summit Barcelona 2026: Dates, Speakers and EU AI Act", 7 September 2026. <a href="https://www.sovereignmagazine.com/article/ai-summit-barcelona-2026" rel="noopener noreferrer" target="_blank">https://www.sovereignmagazine.com/article/ai-summit-barcelona-2026</a></li>
+<li id="S2"><span class="tag">S2</span> Primary (organiser). AI Summit Barcelona, official programme ("Schedule"), 22–23 September 2026. <a href="https://aisummitbarcelona.com/schedule" rel="noopener noreferrer" target="_blank">https://aisummitbarcelona.com/schedule</a></li>
+<li id="S3"><span class="tag">S3</span> Press (preview, media partner). Cointribune, "AI Summit Barcelona 2026: When AI Takes Action in Europe", 18 September 2026. <a href="https://www.cointribune.com/en/ai-summit-barcelona-2026-when-ai-takes-action-in-europe/" rel="noopener noreferrer" target="_blank">https://www.cointribune.com/en/ai-summit-barcelona-2026-when-ai-takes-action-in-europe/</a></li>
+<li id="S4"><span class="tag">S4</span> Press (preview, media partner). Cointribune, "Barcelona Follows Up with AI: The AI Summit closes a busy September", 29 August 2026. <a href="https://www.cointribune.com/en/barcelona-follows-up-with-ai-the-ai-summit-closes-a-busy-september/" rel="noopener noreferrer" target="_blank">https://www.cointribune.com/en/barcelona-follows-up-with-ai-the-ai-summit-closes-a-busy-september/</a></li>
+<li id="S5"><span class="tag">S5</span> Press (release relayed). El Estrecho Digital, "Barcelona will gather 200 speakers and more than 10,000 attendees at the AI Summit 2026", 18 September 2026. <a href="https://www.elestrechodigital.com/en/2026/09/18/barcelona-will-gather-200-speakers-and-more-than-10000-attendees-at-the-ai-summit-2026" rel="noopener noreferrer" target="_blank">https://www.elestrechodigital.com/en/2026/09/18/barcelona-will-gather-200-speakers-and-more-than-10000-attendees-at-the-ai-summit-2026</a></li>
+<li id="S6"><span class="tag">S6</span> Primary (organiser). AI Summit Barcelona, official site, home page after the event. <a href="https://aisummitbarcelona.com/" rel="noopener noreferrer" target="_blank">https://aisummitbarcelona.com/</a></li>
+<li id="S7"><span class="tag">S7</span> Primary (organiser). AI Summit Barcelona, "Speakers" page. <a href="https://aisummitbarcelona.com/speakers" rel="noopener noreferrer" target="_blank">https://aisummitbarcelona.com/speakers</a></li>
+<li id="S8"><span class="tag">S8</span> Primary (community partner). Tech Barcelona, event listing "AI Summit Barcelona 2026". <a href="https://www.techbarcelona.com/en/event/ai-summit-barcelona-2026/" rel="noopener noreferrer" target="_blank">https://www.techbarcelona.com/en/event/ai-summit-barcelona-2026/</a></li>
+<li id="S9"><span class="tag">S9</span> Press (post-event, citing the ACN news agency, El Periódico and Ara). El Ecosistema Startup, "AI Summit Barcelona 2026 cierra con 10.000 asistentes y mira a 2027", 25 September 2026. <a href="https://ecosistemastartup.com/ai-summit-barcelona-2026-cierra-con-10-000-asistentes-y-mira-a-2027/" rel="noopener noreferrer" target="_blank">https://ecosistemastartup.com/ai-summit-barcelona-2026-cierra-con-10-000-asistentes-y-mira-a-2027/</a></li>
+<li id="S10"><span class="tag">S10</span> Press (post-event analysis). La Ecuación Digital, "AI Summit Barcelona pone el foco en llevar la IA a producción", 25 September 2026. <a href="https://www.laecuaciondigital.com/actualidad/ai-summit-barcelona-2026-claves-ia/" rel="noopener noreferrer" target="_blank">https://www.laecuaciondigital.com/actualidad/ai-summit-barcelona-2026-claves-ia/</a></li>
+<li id="S11"><span class="tag">S11</span> Press (release relayed, media partner). Marketing Insider Review, "El AI Summit Barcelona 2026 se consolida como foro de inteligencia artificial", 25 September 2026. <a href="https://marketinginsiderreview.com/ai-summit-barcelona-2026-se-consolida-como-foro-de-inteligencia-artificial" rel="noopener noreferrer" target="_blank">https://marketinginsiderreview.com/ai-summit-barcelona-2026-se-consolida-como-foro-de-inteligencia-artificial</a></li>
+<li id="S12"><span class="tag">S12</span> Press (day-one report). Digital Inside, "El AI Summit Barcelona arranca congregando a más de diez mil profesionales", 24 September 2026. <a href="https://digitalinside.es/el-ai-summit-barcelona-arranca-congregando-a-mas-de-diez-mil-profesionales/" rel="noopener noreferrer" target="_blank">https://digitalinside.es/el-ai-summit-barcelona-arranca-congregando-a-mas-de-diez-mil-profesionales/</a></li>
+<li id="S13"><span class="tag">S13</span> Primary (participant's account). Tobias Sjösten, "What I took home from AI Summit Barcelona 2026", Seastone, September 2026. <a href="https://www.seastone.io/articles/ai-summit-barcelona-2026/" rel="noopener noreferrer" target="_blank">https://www.seastone.io/articles/ai-summit-barcelona-2026/</a></li>
+<li id="S14"><span class="tag">S14</span> Primary (participant's account). Chris Wane, "AI Summit Barcelona: queues like Disneyland", Spectacled Bear.ai, 24 September 2026. <a href="https://spectacledbearai.substack.com/p/ai-summit-barcelona-queues-like-disneyland" rel="noopener noreferrer" target="_blank">https://spectacledbearai.substack.com/p/ai-summit-barcelona-queues-like-disneyland</a></li>
+<li id="S15"><span class="tag">S15</span> Press (event preview). Metrópoli Abierta / El Español, "La cumbre de Inteligencia Artificial de Barcelona reunirá más de 200 ponentes de empresas tecnológicas como NVIDIA y el creador de Siri", 6 August 2026. <a href="https://metropoliabierta.elespanol.com/economia/20260806/cumbre-inteligencia-artificial-barcelona-reunira-ponentes-empresas-tecnologicas-nvidia-creador-siri/1003742785166_0.html" rel="noopener noreferrer" target="_blank">https://metropoliabierta.elespanol.com/economia/20260806/cumbre-inteligencia-artificial-barcelona-reunira-ponentes-empresas-tecnologicas-nvidia-creador-siri/1003742785166_0.html</a></li>
+<li id="S16"><span class="tag">S16</span> Press (government announcement relayed). Press Digital, "Illa anuncia que el Govern destinará 1.000 millones hasta 2030 en la estrategia de IA en Cataluña", 10 November 2025. <a href="https://www.pressdigital.es/articulo/economia/2025-11-10/5662429-illa-anuncia-govern-destinara-1000-millones-hasta-2030-estrategia-ia-cataluna" rel="noopener noreferrer" target="_blank">https://www.pressdigital.es/articulo/economia/2025-11-10/5662429-illa-anuncia-govern-destinara-1000-millones-hasta-2030-estrategia-ia-cataluna</a></li>
+<li id="S17"><span class="tag">S17</span> Press (closing report). Digital Inside, "El AI Summit Barcelona concluye su segunda edición con el foco en la gobernanza tecnológica", 29 September 2026. <a href="https://digitalinside.es/el-ai-summit-barcelona-concluye-su-segunda-edicion-con-el-foco-en-la-gobernanza-tecnologica/" rel="noopener noreferrer" target="_blank">https://digitalinside.es/el-ai-summit-barcelona-concluye-su-segunda-edicion-con-el-foco-en-la-gobernanza-tecnologica/</a></li>
+<li id="S18"><span class="tag">S18</span> Press (release relayed). Empresa Exterior, "AI Summit Barcelona 2026: Cataluña presenta su estrategia IA con una inversión de 1.000M€", September 2026. <a href="https://empresaexterior.com/barcelona-se-consolida-como-hub-de-ia-con-la-segunda-edicion-del-ai-summit-y-una-inversion-estrategica-de-1-000-millones/" rel="noopener noreferrer" target="_blank">https://empresaexterior.com/barcelona-se-consolida-como-hub-de-ia-con-la-segunda-edicion-del-ai-summit-y-una-inversion-estrategica-de-1-000-millones/</a></li>
+<li id="S19"><span class="tag">S19</span> Press (opinion, unsigned, unsourced). Diario Tecnología, "¡El gran desastre del AI Summit Barcelona! Sobreaforo del 500%, furia masiva y una avalancha de reclamaciones", 24 September 2026. <a href="https://www.diariotecnologia.es/posts/el-gran-desastre-del-ai-summit-barcelona-sobreaforo-del-500-furia-masiva-y-una-avalancha-de-reclamaciones" rel="noopener noreferrer" target="_blank">https://www.diariotecnologia.es/posts/el-gran-desastre-del-ai-summit-barcelona-sobreaforo-del-500-furia-masiva-y-una-avalancha-de-reclamaciones</a></li>
+</ol>
+
+
+    <footer>
+      <p>This text is © CD Consulting R&amp;D and licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener noreferrer" target="_blank">CC BY-NC-ND 4.0</a> (attribution, non-commercial, no derivatives). Quoted figures and sentences remain the property of their publishers, the summit organiser, the Catalan government, the trade press and the participants who published their accounts.</p>
+      <p class="backlinks"><a href="./">← KB-AI</a> · <a href="../index.html">CD Consulting R&amp;D</a></p>
+    </footer>
+  </main>
+  <script>(function(){var b=document.getElementById("theme");b.addEventListener("click",function(){var r=document.documentElement;var cur=r.getAttribute("data-theme");var sys=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";var now=(cur||sys)==="dark"?"light":"dark";r.setAttribute("data-theme",now);try{localStorage.setItem("kb-theme",now);}catch(e){}});})();</script>
+</body>
+</html>
