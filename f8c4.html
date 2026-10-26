@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Les données ne sont pas des ordres : l'injection de prompt dans les agents LLM, et ce qui tient vraiment (octobre 2026) — version française — CD Consulting R&amp;D</title>
+  <meta name="description" content="Version française condensée de l&#x27;entrée 10 : un modèle de langage ne distingue pas un ordre d&#x27;une donnée ; trois ans d&#x27;incidents montrent le même chemin (données privées, contenu non fiable, URL de sortie) ; toute défense probabiliste testée de façon adaptative a été contournée ; un taux résiduel par essai tend vers la certitude sous réessais ; les seules bornes sont architecturales, coûtent de l&#x27;utilité et ne se composent pas entre agents ; les éditeurs disent que le problème ne sera pas résolu ; l&#x27;entreprise doit concevoir comme si l&#x27;injection réussissait.">
+  <style>
+/* Mixed edition: light by default, dark when the system asks for it, and a manual switch
+   (remembered in this browser) that overrides the system in both directions. The two
+   palettes are those already used in this Knowledge Base: the light one of the chapter
+   indexes, the nocturnal one of entry 1. */
+:root{
+  color-scheme:light dark;
+  --bg:#f7f6f3; --panel:#ffffff; --panel-2:#efede8; --quote:#f1efea; --code:#efede8;
+  --ink:#1a1a1a; --ink-strong:#0e0e0e; --muted:#555c66; --rule:#ddd8cf; --rule-soft:#e8e4dc;
+  --accent:#3d6478; --accent-hover:#274a5c; --sel:#d9e4ec; --hover:#f3f1ec; --scroll:#c9c4ba;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+    --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+    --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a; --scroll:#39424f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+  --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+  --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a; --scroll:#39424f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{max-width:900px;margin:0 auto;padding:56px 24px 104px}
+::selection{background:var(--sel);color:var(--ink-strong)}
+h1{font-family:var(--serif);font-size:clamp(27px,4.4vw,42px);line-height:1.15;font-weight:600;letter-spacing:-.015em;
+  margin:0 0 18px;color:var(--ink-strong);padding-bottom:22px;border-bottom:2px solid var(--accent);text-align:center}
+h2{font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:-.01em;color:var(--ink-strong);
+  margin:60px 0 14px;padding-top:26px;border-top:1px solid var(--rule);scroll-margin-top:16px}
+h2#contents{border-top:none;padding-top:0;margin-top:42px}
+h3{font-size:18px;font-weight:600;margin:38px 0 10px;letter-spacing:-.005em;font-family:var(--serif);color:var(--ink-strong);scroll-margin-top:16px}
+p{margin:0 0 17px;max-width:72ch}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
+a.ref{font-family:var(--sans);font-size:.82em;text-decoration:none;white-space:nowrap}
+strong{font-weight:650;color:var(--ink-strong)}
+ul,ol{max-width:72ch;padding-left:24px;margin:0 0 19px}
+li{margin-bottom:10px}
+li::marker{color:var(--muted)}
+h2#contents + ol{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px 22px 22px 46px;max-width:none;font-size:15px}
+h2#contents + ol li{margin-bottom:8px}
+h2#contents + ol li::marker{color:var(--accent)}
+code{font-family:var(--mono);font-size:.87em;background:var(--code);color:var(--ink);padding:2px 6px;border-radius:4px;word-break:break-word;border:1px solid var(--rule-soft)}
+.scroll{overflow-x:auto;margin:26px 0 30px;border:1px solid var(--rule);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.55}
+thead th{background:var(--panel-2);color:var(--ink-strong);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:650;border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hover)}
+ol.srclist{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px 24px 22px 24px;max-width:none;list-style:none}
+ol.srclist li{margin-bottom:15px;line-height:1.55;font-size:14px;padding-left:52px;position:relative}
+ol.srclist li:last-child{margin-bottom:0}
+ol.srclist li .tag{position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--rule);border-radius:4px;padding:1px 5px}
+ol.srclist a{font-family:var(--mono);font-size:12.5px;word-break:break-all}
+*{scrollbar-color:var(--scroll) var(--bg)}
+.mark{font-family:var(--sans);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;text-align:center}
+nav.crumbs{font-family:var(--sans);font-size:12.5px;text-align:center;color:var(--muted);margin-bottom:26px}
+nav.crumbs a{color:var(--accent)}
+.cartouche{font-family:var(--sans);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:34px;padding-bottom:24px;border-bottom:1px solid var(--rule-soft)}
+.standfirst{font-family:var(--serif);font-size:16px;color:var(--muted);text-align:center;margin:0 0 8px;max-width:none}
+.meta-line{font-family:var(--sans);font-size:13px;color:var(--muted);text-align:center;margin-bottom:38px;max-width:none}
+.theme{position:fixed;top:14px;right:14px;font-family:var(--sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--panel);color:var(--muted);border:1px solid var(--rule);border-radius:99px;padding:6px 12px;cursor:pointer}
+.theme:hover{color:var(--accent);border-color:var(--accent)}
+footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6}
+footer p{margin-bottom:14px;max-width:none}
+footer .backlinks{text-align:center;margin-top:34px;font-size:14px}
+@media (max-width:640px){.wrap{padding:34px 16px 68px}body{font-size:16px}h2#contents + ol{padding-left:38px}.theme{top:8px;right:8px}}
+@media print{html,body{background:#fff;color:#000;font-size:11pt}.wrap{max-width:none;padding:0}.theme{display:none}
+  h1,h2,h3,strong{color:#000}h1{border-bottom-color:#000}h2{border-top-color:#999;page-break-after:avoid}a{color:#000}
+  code,.scroll,h2#contents + ol,ol.srclist{background:#fff;border-color:#bbb;color:#000}thead th{background:#eee;color:#000}
+  .scroll{page-break-inside:avoid;overflow:visible}table{min-width:0;font-size:9pt}td,th{border-bottom-color:#ccc}}
+  
+/* Start-here primer for the non-specialist reader (editorial charter, rule 1) */
+aside.primer{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:18px 22px;margin:8px 0 34px;font-size:15.5px;line-height:1.6;max-width:none}
+aside.primer .primer-title{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px;max-width:none}
+aside.primer p{margin:0 0 10px;max-width:72ch}
+aside.primer p:last-child{margin-bottom:0}
+aside.primer em{font-style:italic;color:var(--ink)}
+@media print{aside.primer{background:#fff;border-color:#bbb}}
+.enjeu{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--accent);text-align:center;margin:0 0 8px}
+
+:root{--accent:#4a4a8c;--accent-hover:#36366b;--kb-c:#4a4a8c;
+  --kb-forme:none;--kb-fond:transparent;--kb-bord:2px solid var(--kb-c);--kb-rayon:50%;
+  --kb-filet:repeating-linear-gradient(90deg,var(--kb-c) 0 2px,transparent 2px 6px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#a0a0dc;--accent-hover:#c0c0ec;--kb-c:#a0a0dc}}
+:root[data-theme="dark"]{--accent:#a0a0dc;--accent-hover:#c0c0ec;--kb-c:#a0a0dc}
+h1{border-bottom-color:transparent;position:relative}
+h1::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-2px;
+  width:170px;height:4px;background:var(--kb-filet)}
+.mark::before{content:"";display:inline-block;box-sizing:border-box;width:10px;height:10px;
+  vertical-align:1px;margin-right:11px;background:var(--kb-fond);clip-path:var(--kb-forme);
+  border:var(--kb-bord);border-radius:var(--kb-rayon)}
+  </style>
+  <script>(function(){try{var t=localStorage.getItem("kb-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+</head>
+<body>
+  <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">Light / Dark</button>
+  <main class="wrap">
+    <p class="mark">CD Consulting R&amp;D</p>
+    <nav class="crumbs" lang="en"><a href="../index.html">Home</a> · <a href="./">KB-AI</a> · Entry 10</nav>
+    <p class="cartouche" lang="en">KB-AI · Entry 10 · Published 2026-10-26 · Version 1</p>
+<h1>Les données ne sont pas des ordres : l'injection de prompt dans les agents LLM, et ce qui tient vraiment (octobre 2026) — version française</h1>
+<p class="standfirst" lang="en">French companion of entry 10: why prompt injection is structural, what three years of incidents and benchmarks show, which defences only lower the odds and which bound the damage, and the ten rules a company should apply, in a condensed French version; the full entry and its 92 sources are in English.</p>
+<p class="enjeu" lang="en">If you let an AI agent read documents, mail, web pages or tool results and then act on your behalf, and read French more easily than English, this is the comparison in brief, with the incidents, the numbers and the design rules; the full entry and its 92 sources are in English.</p>
+<p class="meta-line" lang="en">Method: condensed French version of entry 10, from the same sources consulted on 21 and 26 October 2026; 31 selected sources listed in section 8; vendor figures and secondary figures identified as such. Nothing was installed or executed.</p>
+<aside class="primer" lang="en">
+<p class="primer-title">Start here — if the subject is new to you</p>
+<p>A language model reads everything it is given as one stream of text: your instructions, the document to summarise, the web page it fetched, the result of a tool. By construction it cannot tell an order from data. Prompt injection exploits this: someone hides an instruction in a page, an email, a file or a tool description, and the model follows it as if you had asked.</p>
+<p>It matters because assistants have become agents. A fooled chatbot says something wrong; a fooled agent sends your mail, deletes your files or leaks your data, with your permissions and sometimes without a click. The vendors say the problem is not solved.</p>
+<p>This French companion condenses the entry: why injection is structural, what incidents and benchmarks show, which defences only lower the odds and which bound the damage, and the ten rules that follow.</p>
+</aside>
+<h2 id="contents" lang="en">Contents</h2>
+<ol>
+<li><a href="#1-l-essentiel-en-six-points">1. L'essentiel en six points</a></li>
+<li><a href="#2-pourquoi-c-est-structurel">2. Pourquoi c'est structurel</a></li>
+<li><a href="#3-ce-que-montrent-les-incidents">3. Ce que montrent les incidents</a></li>
+<li><a href="#4-ce-que-disent-les-bancs">4. Ce que disent les bancs</a></li>
+<li><a href="#5-les-r-ponses-class-es-par-niveau-de-preuve">5. Les réponses, classées par niveau de preuve</a></li>
+<li><a href="#6-ce-qu-une-entreprise-doit-faire-concevoir-comme-si-l-injection-r-ussissait">6. Ce qu'une entreprise doit faire : concevoir comme si l'injection réussissait</a></li>
+<li><a href="#7-ce-qui-reste-ouvert">7. Ce qui reste ouvert</a></li>
+<li><a href="#8-sources">8. Sources</a></li>
+</ol>
+
+<h2 id="1-l-essentiel-en-six-points">1. L'essentiel en six points</h2>
+<ol><li><strong>L'injection n'est pas un bogue, c'est le mécanisme.</strong> Un modèle reçoit instructions et données dans un seul flux de jetons, et la compétence qu'on lui achète — suivre des instructions — est exactement ce que l'attaquant exploite. Il n'existe pas d'équivalent des requêtes paramétrées <a class="ref" href="#S1">[S1]</a><a class="ref" href="#S2">[S2]</a>.</li><li><strong>Tout ce qui entre dans le contexte est un canal</strong> : page, courriel, document, résultat d'outil, description d'outil MCP, mémoire, fichiers de configuration d'un dépôt, skill, image, autre agent. Dix-sept canaux sont documentés ; le canal de sortie est presque toujours une URL <a class="ref" href="#S3">[S3]</a><a class="ref" href="#S4">[S4]</a>.</li><li><strong>Toute défense probabiliste testée de façon adaptative a été contournée</strong>, la plupart à plus de 90 % : classifieurs, délimiteurs, hiérarchie d'instructions, entraînement anti-injection, juges LLM. Les chiffres « proches de zéro » viennent d'attaques statiques <a class="ref" href="#S5">[S5]</a>.</li><li><strong>Un taux résiduel de 1 % n'est pas une sécurité.</strong> Avec des réessais il tend vers la certitude — un modèle mesuré passe de 4,7 % à 63 % entre un et cent essais — et sur des milliers d'actions par jour c'est un incident régulier <a class="ref" href="#S6">[S6]</a><a class="ref" href="#S7">[S7]</a>.</li><li><strong>Les seules garanties sont architecturales</strong> : séparation structurelle des flux, politique déterministe hors du code de l'agent, confinement par le système d'exploitation, approbation humaine par action, réduction de surface. Elles sont conditionnelles, coûtent de l'utilité, et ne se composent pas d'office entre agents <a class="ref" href="#S8">[S8]</a><a class="ref" href="#S9">[S9]</a><a class="ref" href="#S10">[S10]</a>.</li><li><strong>Les éditeurs le disent eux-mêmes</strong> : « no browser agent is immune », « may never be totally mitigated », risque « inhérent », « unlikely to ever be fully 'solved' », « protection in the model layer will never be 100% effective ». Leur réponse commune est la défense en profondeur et la réduction d'impact, jamais une garantie <a class="ref" href="#S11">[S11]</a><a class="ref" href="#S12">[S12]</a><a class="ref" href="#S30">[S30]</a>.</li></ol>
+
+<h2 id="2-pourquoi-c-est-structurel">2. Pourquoi c'est structurel</h2>
+<p>Trois causes convergent dans toute la littérature. Pas de séparation code / données : prompt système, demande de l'utilisateur, document lu et sortie d'outil arrivent par le même canal, et les rôles (system, user, tool) sont des conventions apprises, pas une frontière matérielle ; une étude par sondes internes montre que le texte injecté occupe le même espace de représentation que le rôle qu'il imite — le modèle juge « qui parle » au style du texte, pas à l'étiquette <a class="ref" href="#S13">[S13]</a>. Suivi d'instructions appris : l'entraînement enseigne au modèle d'obéir à ce qui ressemble à une instruction, où qu'elle se trouve. Hiérarchie non garantie : la priorité système &gt; utilisateur &gt; outil est une préférence statistique — l'article d'OpenAI sur la hiérarchie d'instructions dit qu'elle « drastically increases robustness », pas qu'elle garantit — contournable par imitation et par optimisation <a class="ref" href="#S14">[S14]</a>. Un article de 2026 va plus loin et argumente l'impossibilité : un attaquant peut toujours construire un contexte où un flux de données interdit paraît légitime, et resserrer les normes bloque aussi des flux légitimes ; séparer données et instructions est nécessaire, pas suffisant <a class="ref" href="#S31">[S31]</a>.</p>
+<p>Corollaire : une défense <em>dans le modèle</em> rend un score ; un score se cherche, et l'attaquant joue en second. Une borne ne peut venir que d'un composant déterministe <em>hors du modèle</em> : ce que l'agent peut lire, à qui il peut parler, ce qu'il peut exécuter, qui doit dire oui avant une action.</p>
+<p><strong>Jailbreak ≠ injection.</strong> Le jailbreak vise l'éditeur (contenu interdit, dans le prompt de l'utilisateur) ; l'injection indirecte vise l'utilisateur (un tiers place une instruction dans une donnée que l'agent traite pour lui). L'instruction injectée peut être anodine en soi (« envoie ce résumé à telle adresse ») : elle n'est fautive que par rapport à la tâche. Un classifieur de contenu nocif n'a rien à détecter ; il faut un contrôle de cohérence avec l'intention et de flux de données <a class="ref" href="#S2">[S2]</a><a class="ref" href="#S15">[S15]</a>.</p>
+<p><strong>Pourquoi les agents aggravent tout.</strong> Un chatbot compromis dit ; un agent compromis fait. Chaque outil qui lit est un canal ; l'autonomie supprime la relecture humaine (EchoLeak, sur Microsoft 365 Copilot, n'exigeait aucun clic) ; les privilèges sont hérités de l'utilisateur ; le protocole MCP compose des outils de sources différentes dans une même session ; mémoire et fichiers de configuration donnent la persistance ; les chaînes d'agents propagent <a class="ref" href="#S3">[S3]</a><a class="ref" href="#S16">[S16]</a>. Et un modèle plus capable n'est pas plus sûr : un banc trouve une corrélation de 0,66 entre capacité et vulnérabilité, un autre une « inverse scaling », un éditeur note que mieux suivre les instructions aide l'attaquant <a class="ref" href="#S17">[S17]</a><a class="ref" href="#S18">[S18]</a>.</p>
+
+<h2 id="3-ce-que-montrent-les-incidents">3. Ce que montrent les incidents</h2>
+<p>Trente-trois cas de 2023 à 2026 ont été catalogués pour l'entrée. Trois constantes : la « trifecta » de Willison (données privées + contenu non fiable + canal de sortie) dans presque tous les cas ; l'URL comme canal de sortie (image Markdown, lien, requête de navigation, DNS) ; le dépôt de code hostile par défaut (fichiers <code>.env</code>, configuration d'agent et de MCP, hooks, README, règles) <a class="ref" href="#S4">[S4]</a><a class="ref" href="#S19">[S19]</a>.</p>
+<p>Six incidents ont atteint la production, et non une démonstration responsable : la fuite publique du prompt système de Bing ; un prompt effaceur livré dans une mise à jour officielle d'Amazon Q ; la compromission de la chaîne d'approvisionnement Nx, où des outils d'IA en ligne de commande ont été retournés pour chercher des secrets (480 comptes et 6 700 dépôts privés exposés selon un décompte) ; un serveur MCP de courrier piégé, sain pendant quinze versions ; une place de marché de skills malveillantes ; l'exposition d'un réseau social d'agents. <strong>Tous relèvent de la chaîne d'approvisionnement ou de l'exposition, pas de l'injection indirecte pure</strong>, qui reste surtout une démonstration responsable, avec des signes d'usage réel depuis fin 2025 <a class="ref" href="#S19">[S19]</a><a class="ref" href="#S20">[S20]</a>.</p>
+<p>Les délais de correction parlent : rapides quand l'éditeur maîtrise un client (onze à vingt-huit jours), lents sur les plateformes (deux à cinq mois), nuls pour les défauts d'architecture, requalifiés en « comportement attendu » <a class="ref" href="#S19">[S19]</a>. Ce que les éditeurs ont changé après leurs incidents est la leçon pratique : suppression du rendu d'images et de liens, retrait des commandes « en lecture seule » des listes pré-approuvées (elles portaient des données), affichage de la commande entière et approbation par binaire, confirmation avant toute exécution de configuration MCP, modes lecture seule par défaut, publication de taux résiduels.</p>
+<p><strong>Mise à jour 2026.</strong> Les dix premiers mois de 2026 n'ajoutent aucun mécanisme nouveau, mais déplacent trois choses. <em>Les surfaces</em> : une description d'événement d'agenda qui fait résumer par Gemini des réunions privées dans un événement lisible par l'attaquant, en contournant un classifieur d'injection dédié (janvier) <a class="ref" href="#S25">[S25]</a> ; un évaluateur de commandes de Cursor qui faisait confiance aux commandes internes du shell, si bien qu'une variable d'environnement empoisonnée dans un README transformait un <code>git</code> approuvé en exécution de code, CVE-2026-22708 (janvier) <a class="ref" href="#S19">[S19]</a> ; un titre de pull request qui a fait publier leur propre clé d'API, en commentaire, par les agents de revue GitHub de trois éditeurs — correctifs silencieux, aucun CVE, primes de 100, 1 337 et 500 dollars (avril) <a class="ref" href="#S26">[S26]</a> ; des configurations MCP de projet exécutées sur un « oui » par défaut par quatre agents en ligne de commande (mai) <a class="ref" href="#S19">[S19]</a>. <em>La télémétrie</em> : le balayage du web public par Google mesure une hausse relative de 32 % des contenus d'injection malveillants entre novembre 2025 et février 2026, de faible sophistication — « attackers are experimenting » <a class="ref" href="#S27">[S27]</a>. <em>Le régime de divulgation</em> : peu d'incidents d'injection reçoivent un CVE, les correctifs sont souvent silencieux, les primes sont basses ; les décomptes publics sous-estiment donc le phénomène <a class="ref" href="#S26">[S26]</a>. Une correction au dossier 2025 : CVE-2025-53773 désigne l'exécution de code à distance dans GitHub Copilot par un prompt qui écrivait un réglage d'auto-approbation dans la configuration de l'éditeur ; « CamoLeak », l'exfiltration par le proxy d'images de GitHub, ne porte aucun CVE dans sa divulgation <a class="ref" href="#S19">[S19]</a>.</p>
+
+<h2 id="4-ce-que-disent-les-bancs">4. Ce que disent les bancs</h2>
+<p>Le banc de référence, AgentDojo (ETH Zurich, 2024), mesure l'utilité sans attaque, l'utilité sous attaque et le taux de succès de l'attaque sur un agent à outils. Sur son attaque de référence, les modèles nus allaient en 2024-2025 de 1,1 % à 56 % ; le même modèle varie d'un facteur treize selon l'attaque choisie <a class="ref" href="#S17">[S17]</a>.</p>
+<p>Les défenses et leur coût, sur ce banc : un filtre d'outils ramène GPT-4o de 58 % à 7 % sans perte d'utilité, mais tombe dès que l'outil utile sert l'attaque ; un classifieur ramène à 8 % et fait chuter l'utilité de 69 % à 41 % par ses faux positifs ; les délimiteurs n'atteignent que 42 % ; la défense en couches de Meta divise par dix pour cinq points d'utilité ; son modèle entraîné atteint 1,9 %, puis 32 % face à des attaquants humains et 47 % sous attaque adaptative <a class="ref" href="#S17">[S17]</a><a class="ref" href="#S21">[S21]</a><a class="ref" href="#S22">[S22]</a>. L'architecture CaMeL (Google DeepMind et ETH) ramène 300 attaques réussies à zéro, au prix de sept points de tâches résolues (84 % → 77 %) et d'environ 2,8 fois plus de jetons <a class="ref" href="#S8">[S8]</a>.</p>
+<p>Les deux résultats qui comptent : l'évaluation adaptative — une étude de 2025 contourne les huit défenses testées à plus de 50 %, une autre, signée de chercheurs de Google DeepMind, d'OpenAI et de l'ETH, en contourne douze « la plupart à plus de 90 % » contre les taux proches de zéro annoncés <a class="ref" href="#S5">[S5]</a> — et les réessais : l'évaluation d'Anthropic sur son agent de navigation joue cent essais par environnement et publie 1,4 % pour son meilleur modèle avec garde-fous <a class="ref" href="#S6">[S6]</a> ; une évaluation indépendante de trois modèles de pointe voit le succès monter de 4,7 % à 63 %, et pour d'autres de 12,5 % à 92 %, entre un et cent essais <a class="ref" href="#S7">[S7]</a>. Un taux résiduel est un taux par essai ; l'attaquant n'est pas limité à un.</p>
+<p><strong>Mise à jour 2026 : concours de masse et chiffres d'éditeurs.</strong> Deux concours publics donnent l'échelle. Celui de Gray Swan avec l'AI Security Institute britannique (2025) : 1,8 million d'attaques humaines contre 22 agents de pointe, plus de 60 000 violations de politique, la plupart des agents tombant en 10 à 100 requêtes, et une robustesse corrélée ni à la taille ni à la capacité du modèle <a class="ref" href="#S28">[S28]</a>. Son successeur de 2026, l'IPI Arena : environ 272 000 tentatives de 464 attaquants contre 13 modèles sur 41 scénarios agentiques, 8 648 réussites, de 0,5 % à 8,5 % selon le modèle, des attaques universelles pour 21 des 41 comportements, aucun modèle indemne ; l'arène mesure des modèles, pas des défenses de système <a class="ref" href="#S29">[S29]</a>. Côté éditeurs, Anthropic a publié en 2026 une série de chiffres qui montre pourquoi les taux d'éditeur ne forment pas une courbe : environ 0,1 % au premier essai et 5 à 6 % après cent essais adaptatifs pour un modèle, avec l'aveu que « protection in the model layer will never be 100% effective » <a class="ref" href="#S30">[S30]</a> ; pour son agent de navigation, le retrait d'une évaluation saturée et, sur une plus dure, 17,6 % puis 3,8 % pour deux modèles successifs avant garde-fous, puis 0 à 0,3 % avec sondes et classifieur — chiffres que l'éditeur déclare non comparables à ceux de 2025 ; pour son dernier modèle, un 0 % sur 129 scénarios qui ne tient qu'avec un « auto mode » logiciel au-dessus du modèle, 3,7 % sans, connu par la presse seulement <a class="ref" href="#S19">[S19]</a>. Lus ensemble : la couche modèle progresse, les protocoles changent avec elle, et le chiffre qui compte pour une entreprise — le succès d'un attaquant motivé sur son propre déploiement — n'est publié par personne.</p>
+
+<h2 id="5-les-r-ponses-class-es-par-niveau-de-preuve">5. Les réponses, classées par niveau de preuve</h2>
+<p>Trois niveaux : <strong>[C]</strong> prouvé par construction dans un modèle de menace déclaré ; <strong>[B]</strong> mesuré sur banc contre un ensemble fini d'attaques ; <strong>[R]</strong> revendiqué par l'éditeur sans protocole public.</p>
+<div class="scroll"><table><thead><tr><th>Mesure</th><th>Niveau</th><th>Garantie</th><th>Coût</th><th>Ce qui la bat</th></tr></thead><tbody>
+<tr><td>Réduction de surface : casser la trifecta ; « Rule of Two » de Meta ; outils étroits</td><td>[C]</td><td>pas d'exfiltration par ce chemin</td><td>fonctions abandonnées</td><td>rien de publié contre le principe ; les dommages sans exfiltration</td></tr>
+<tr><td>Séparation structurelle des flux : CaMeL, FIDES, dual LLM, six patrons de conception</td><td>[C] conditionnel</td><td>la donnée non fiable ne modifie pas le flux de contrôle ; politique vérifiée avant chaque outil</td><td>CaMeL : 84 → 77 % de tâches, ×2,8 jetons ; FIDES : jusqu'à −24,5 %</td><td>attaques texte-à-texte ; canaux auxiliaires ; pas de composition entre agents</td></tr>
+<tr><td>Politique déterministe hors du code de l'agent</td><td>[C] sur la décision</td><td>une injection ne négocie pas avec un moteur de règles</td><td>rédaction et maintenance</td><td>règle incomplète ; action permise détournée</td></tr>
+<tr><td>Confinement par le système d'exploitation (bac à sable, proxy par binaire, réseau coupé)</td><td>[C] au niveau OS</td><td>fichiers et réseau bornés quoi que fasse le modèle</td><td>tâches réseau impossibles sans élévation</td><td>approbation hors du bac à sable ; domaine autorisé abusé</td></tr>
+<tr><td>Approbation humaine par appel</td><td>[C] sur le blocage</td><td>arrêt avant l'action</td><td>latence, fatigue : un éditeur rapporte ~93 % d'approbation des invites de son agent de code, et un bac à sable qui en retire 84 % <a class="ref" href="#S30">[S30]</a></td><td>approbation aveugle ; « toujours autoriser » lié au nom de l'outil</td></tr>
+<tr><td>Entraînement (hiérarchie d'instructions, entraînement adversarial)</td><td>[B]</td><td>fréquence réduite sur des distributions connues</td><td>sur-refus, régression</td><td>attaques adaptatives : de 2 % à 96 % ; 94,6 % sur une fonction tenue hors entraînement</td></tr>
+<tr><td>Balisage de provenance (spotlighting, mode document)</td><td>[B] / [R]</td><td>rend la provenance lisible</td><td>jetons</td><td>délimiteurs forgés ; recherche adaptative &gt; 95 %</td></tr>
+<tr><td>Détection : classifieurs d'entrée, juges LLM, surveillance de trajectoire</td><td>[B] éditeur</td><td>ce que le harnais lui passe ; un tour</td><td>rappel à faux positifs fixés sur votre trafic</td><td>contournée à plus de 90 %, jusqu'à 100 % pour deux boucliers commerciaux ; le juge est injectable ; un juge contourné quatre jours après sa sortie ; le classifieur d'actions d'un éditeur (2026) : 0,4 % de faux positifs mais 17 % d'actions excessives réelles manquées, « the honest number » <a class="ref" href="#S19">[S19]</a></td></tr>
+</tbody></table></div>
+<p>La détection détecte sans borner : elle réduit le volume d'attaques banales, alimente le journal et crée de la friction ; elle ne voit que ce que le harnais lui passe. Plus le juge voit de contenu non fiable, plus il est injectable ; moins il en voit, plus il manque de contexte. L'échec ouvert ou fermé doit être une décision écrite par classe d'action, fermé avant tout geste irréversible ou sortant.</p>
+<p><strong>Correction.</strong> On ne corrige que ce qu'on peut retracer et on ne répare que ce qu'on peut défaire : une exfiltration ne se rembobine pas ; les points de reprise des agents de code ne défont que les éditions de fichiers ; la spécification MCP ne traite pas la révocation des jetons ; aucun cadre public ne détaille la séquence couper → geler les preuves → révoquer et faire tourner les secrets → restaurer → purger mémoire et configuration → rejouer <a class="ref" href="#S23">[S23]</a><a class="ref" href="#S24">[S24]</a>.</p>
+
+<h2 id="6-ce-qu-une-entreprise-doit-faire-concevoir-comme-si-l-injection-r-ussissait">6. Ce qu'une entreprise doit faire : concevoir comme si l'injection réussissait</h2>
+<ol><li><strong>Nommer la trifecta pour chaque déploiement</strong> : dire laquelle des trois jambes est coupée ; un agent qui a les trois exige une supervision par action.</li><li><strong>Contrôler les sorties, pas seulement les entrées</strong> : la liste des canaux de sortie admis, imposée par mécanisme, parce que l'URL est le canal d'exfiltration dominant et qu'une commande « en lecture seule » peut en être un.</li><li><strong>Moindre privilège, et la commande entière</strong> : permissions par outil ; approbation sur toute la commande, pas son premier mot ; jamais de clé d'administration.</li><li><strong>Le dépôt est hostile par défaut</strong> : rien de ce qu'il contient ne se charge avant le consentement explicite de l'humain ; skills et serveurs MCP sont des actifs revus, épinglés par version et par hachage.</li><li><strong>La provenance comme règle</strong> : tout contenu lu porte une provenance ; seul l'humain en session mandate ; le non fiable est résumé par un composant sans outils avant d'entrer dans celui qui agit ; un résultat d'outil n'est jamais relu comme une instruction.</li><li><strong>Séparer les flux là où l'enjeu le justifie</strong>, avec un des patrons publiés, et accepter la perte de généralité.</li><li><strong>Approuver par action, et combattre la fatigue d'approbation</strong> : réserver l'approbation à l'irréversible et au sortant, montrer l'action entière, ne jamais laisser un mode non interactif transformer « demander » en silence.</li><li><strong>Détecter comme couche d'observation</strong>, réglages écrits : où, ce qu'il voit, échec ouvert ou fermé par classe d'action, mode observation d'abord, taux de faux positifs mesuré sur le trafic réel.</li><li><strong>Tracer tout, préparer la réponse avant l'incident</strong> : inventaire des secrets accessibles, identité d'agent révocable, journal des décisions d'outils, séquence de réponse écrite, matrice d'attaque rejouée après tout changement.</li><li><strong>Dire ce qu'est une règle en langage naturel</strong> : « les données ne sont pas des ordres » écrit dans les instructions d'un modèle est une disposition, qui réduit la fréquence sans borner le pire cas ; elle devient une borne quand un mécanisme l'impose et qu'une mesure prouve qu'elle a tenu. Un RSSI entendra la différence entre « nous bloquons l'injection » et « nous avons conçu comme si elle réussissait ».</li></ol>
+
+<h2 id="7-ce-qui-reste-ouvert">7. Ce qui reste ouvert</h2>
+<p>Aucune attaque adaptative publiée contre les garanties de flux de CaMeL ou de FIDES, hors canaux auxiliaires et composition ; aucune réplication indépendante des chiffres d'éditeur ; aucun banc pour la mémoire, la configuration, le multimodal et le multi-agent à grande échelle ; le coût humain des faux positifs chiffré nulle part ; la composition des garanties entre agents non résolue.</p>
+
+<h2 id="8-sources">8. Sources</h2>
+<p>Sélection ; la liste complète (92 sources typées et datées) est dans l'entrée anglaise de ce chapitre. Consultées les 21 et 26 octobre 2026.</p>
+<ol class="srclist">
+<li id="S1"><span class="tag">S1</span> Official. OWASP, « Top 10 for LLM Applications 2025 », LLM01 : Prompt Injection. <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" rel="noopener noreferrer" target="_blank">https://genai.owasp.org/llmrisk/llm01-prompt-injection/</a></li>
+<li id="S2"><span class="tag">S2</span> Researcher. Simon Willison, série « Prompt injection », 2022-2026. <a href="https://simonwillison.net/series/prompt-injection/" rel="noopener noreferrer" target="_blank">https://simonwillison.net/series/prompt-injection/</a></li>
+<li id="S3"><span class="tag">S3</span> Academic. Kai Greshake et al., « Not what you've signed up for », 2023 ; arXiv:2302.12173. <a href="https://arxiv.org/abs/2302.12173" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2302.12173</a></li>
+<li id="S4"><span class="tag">S4</span> Researcher. Simon Willison, « The lethal trifecta for AI agents », 16 juin 2025. <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" rel="noopener noreferrer" target="_blank">https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/</a></li>
+<li id="S5"><span class="tag">S5</span> Academic. « The Attacker Moves Second: Stronger Adaptive Attacks Bypass Defenses Against LLM Jailbreaks and Prompt Injections », 2025 ; arXiv:2510.09023 ; et Carlini et al., arXiv:2503.00061. <a href="https://arxiv.org/abs/2510.09023" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2510.09023</a></li>
+<li id="S6"><span class="tag">S6</span> Vendor research. Anthropic, « Prompt injection defenses for agents », 24 novembre 2025. <a href="https://www.anthropic.com/research/prompt-injection-defenses" rel="noopener noreferrer" target="_blank">https://www.anthropic.com/research/prompt-injection-defenses</a></li>
+<li id="S7"><span class="tag">S7</span> Press (relais d'une évaluation tierce, à confirmer). The Decoder, évaluation Gray Swan à 1, 10 et 100 essais, novembre 2025. <a href="https://the-decoder.com/" rel="noopener noreferrer" target="_blank">https://the-decoder.com/</a></li>
+<li id="S8"><span class="tag">S8</span> Academic et vendor research. Debenedetti et al. (Google DeepMind, ETH), « Defeating Prompt Injections by Design » (CaMeL), mars 2025 ; arXiv:2503.18813. <a href="https://arxiv.org/abs/2503.18813" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2503.18813</a></li>
+<li id="S9"><span class="tag">S9</span> Academic et vendor research. Beurer-Kellner et al., « Design Patterns for Securing LLM Agents against Prompt Injections », juin 2025 ; arXiv:2506.08837. <a href="https://arxiv.org/abs/2506.08837" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2506.08837</a></li>
+<li id="S10"><span class="tag">S10</span> Academic. « Can CaMeLs Talk? » (non-composition des garanties de flux entre agents), 2025 ; arXiv:2610.05640. <a href="https://arxiv.org/abs/2610.05640" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2610.05640</a></li>
+<li id="S11"><span class="tag">S11</span> Vendor. Anthropic, « Piloting Claude for Chrome », 26 août 2025. <a href="https://www.anthropic.com/news/claude-for-chrome" rel="noopener noreferrer" target="_blank">https://www.anthropic.com/news/claude-for-chrome</a></li>
+<li id="S12"><span class="tag">S12</span> Official. National Cyber Security Centre (Royaume-Uni), orientations sur l'injection de prompt, 2023-2025. <a href="https://www.ncsc.gov.uk/" rel="noopener noreferrer" target="_blank">https://www.ncsc.gov.uk/</a></li>
+<li id="S13"><span class="tag">S13</span> Academic. Ye, Cui et Hadfield-Menell, étude par sondes des instructions injectées, ICML 2026 ; arXiv:2603.12277. <a href="https://arxiv.org/abs/2603.12277" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2603.12277</a></li>
+<li id="S14"><span class="tag">S14</span> Vendor research. Wallace et al. (OpenAI), « The Instruction Hierarchy », 2024 ; arXiv:2404.13208. <a href="https://arxiv.org/abs/2404.13208" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2404.13208</a></li>
+<li id="S15"><span class="tag">S15</span> Researcher. Simon Willison, « Prompt injection and jailbreaking are not the same thing », 5 mars 2024. <a href="https://simonwillison.net/2024/Mar/5/prompt-injection-jailbreaking/" rel="noopener noreferrer" target="_blank">https://simonwillison.net/2024/Mar/5/prompt-injection-jailbreaking/</a></li>
+<li id="S16"><span class="tag">S16</span> Vendor et researcher. Aim Security, « EchoLeak », CVE-2025-32711, juin 2025. <a href="https://www.aim.security/lp/aim-labs-echoleak-blogpost" rel="noopener noreferrer" target="_blank">https://www.aim.security/lp/aim-labs-echoleak-blogpost</a></li>
+<li id="S17"><span class="tag">S17</span> Academic. Debenedetti et al., « AgentDojo », NeurIPS 2024 ; arXiv:2406.13352 ; page de résultats. <a href="https://agentdojo.spylab.ai/" rel="noopener noreferrer" target="_blank">https://agentdojo.spylab.ai/</a></li>
+<li id="S18"><span class="tag">S18</span> Vendor research. Google DeepMind, « Lessons from Defending Gemini Against Indirect Prompt Injections », 2025 ; arXiv:2505.14534. <a href="https://arxiv.org/abs/2505.14534" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2505.14534</a></li>
+<li id="S19"><span class="tag">S19</span> Author's catalogue. Trente-trois incidents et divulgations publics, 2023-2026, compilés dans l'entrée anglaise (sources S24 à S57), consultés le 21 octobre 2026 ; complétés le 26 octobre 2026 par les cas et chiffres de 2026 (sources S74 à S92 de l'entrée anglaise : Pillar Security, Cloud Security Alliance, Legit Security, Embrace The Red, Anthropic « auto mode », The Decoder).</li>
+<li id="S20"><span class="tag">S20</span> Vendor research. Wiz, « s1ngularity », août-septembre 2025. <a href="https://www.wiz.io/blog/" rel="noopener noreferrer" target="_blank">https://www.wiz.io/blog/</a></li>
+<li id="S21"><span class="tag">S21</span> Vendor research. Meta, « LlamaFirewall », 2025 ; arXiv:2505.03574. <a href="https://arxiv.org/abs/2505.03574" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2505.03574</a></li>
+<li id="S22"><span class="tag">S22</span> Academic et vendor research. Microsoft et partenaires, « LLMail-Inject », 2025 ; arXiv:2506.09956. <a href="https://arxiv.org/abs/2506.09956" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2506.09956</a></li>
+<li id="S23"><span class="tag">S23</span> Official. NIST, « AI 600-1, Generative AI Profile », 2024. <a href="https://csrc.nist.gov/pubs/ai/600/1/final" rel="noopener noreferrer" target="_blank">https://csrc.nist.gov/pubs/ai/600/1/final</a></li>
+<li id="S24"><span class="tag">S24</span> Official. Model Context Protocol, « Authorization », révision du 28 juillet 2026. <a href="https://modelcontextprotocol.io/specification/latest/basic/authorization" rel="noopener noreferrer" target="_blank">https://modelcontextprotocol.io/specification/latest/basic/authorization</a></li>
+<li id="S25"><span class="tag">S25</span> Vendor research. Miggo Security, « Weaponizing calendar invites: a semantic attack on Google Gemini », 19 janvier 2026. <a href="https://www.miggo.io/post/weaponizing-calendar-invites-a-semantic-attack-on-google-gemini" rel="noopener noreferrer" target="_blank">https://www.miggo.io/post/weaponizing-calendar-invites-a-semantic-attack-on-google-gemini</a></li>
+<li id="S26"><span class="tag">S26</span> Press. VentureBeat, « Comment and Control » (titres de pull request contre trois agents de revue GitHub ; correctifs silencieux, primes), 21 avril 2026. <a href="https://venturebeat.com/security/ai-agent-runtime-security-system-card-audit-comment-and-control-2026" rel="noopener noreferrer" target="_blank">https://venturebeat.com/security/ai-agent-runtime-security-system-card-audit-comment-and-control-2026</a></li>
+<li id="S27"><span class="tag">S27</span> Vendor. Google, « AI threats in the wild: prompt injections on the web » (balayage de Common Crawl ; +32 % relatif entre novembre 2025 et février 2026), 23 avril 2026. <a href="https://blog.google/security/prompt-injections-web/" rel="noopener noreferrer" target="_blank">https://blog.google/security/prompt-injections-web/</a></li>
+<li id="S28"><span class="tag">S28</span> Academic. Zou et al., concours Gray Swan avec l'UK AI Security Institute (1,8 million d'attaques, 22 agents), 28 juillet 2025 ; arXiv:2507.20526. <a href="https://arxiv.org/abs/2507.20526" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2507.20526</a></li>
+<li id="S29"><span class="tag">S29</span> Academic et official. Gray Swan AI avec l'UK AISI et le CAISI américain, « IPI Arena », 16 mars 2026 ; arXiv:2603.15714. <a href="https://arxiv.org/abs/2603.15714" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2603.15714</a></li>
+<li id="S30"><span class="tag">S30</span> Vendor. Anthropic, « How we contain Claude across products », 25 mai 2026. <a href="https://www.anthropic.com/engineering/how-we-contain-claude" rel="noopener noreferrer" target="_blank">https://www.anthropic.com/engineering/how-we-contain-claude</a></li>
+<li id="S31"><span class="tag">S31</span> Academic. Sahar Abdelnabi et Eugene Bagdasarian, « AI agents may always fall for prompt injections », 17 mai 2026 ; arXiv:2605.17634. <a href="https://arxiv.org/abs/2605.17634" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2605.17634</a></li>
+</ol>
+
+
+    <footer lang="en">
+      <p>This text is © CD Consulting R&amp;D and licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener noreferrer" target="_blank">CC BY-NC-ND 4.0</a> (attribution, non-commercial, no derivatives). Quoted figures and sentences remain the property of their publishers, cited in section 8 and consulted on 21 and 26 October 2026.</p>
+      <p class="backlinks"><a href="./">← KB-AI</a> · <a href="../index.html">CD Consulting R&amp;D</a></p>
+    </footer>
+  </main>
+  <script>(function(){var b=document.getElementById("theme");b.addEventListener("click",function(){var r=document.documentElement;var cur=r.getAttribute("data-theme");var sys=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";var now=(cur||sys)==="dark"?"light":"dark";r.setAttribute("data-theme",now);try{localStorage.setItem("kb-theme",now);}catch(e){}});})();</script>
+</body>
+</html>
