@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La première norme harmonisée de l'AI Act : ce que l'EN 18286:2026 donne aux fournisseurs de systèmes d'IA à haut risque, et ce qu'elle ne donne pas — CD Consulting R&amp;D</title>
+  <meta name="description" content="Version française intégrale de l&#x27;entrée 11. Le 14 octobre 2026, la Commission a publié au Journal officiel la référence de l&#x27;EN 18286:2026, première norme harmonisée de l&#x27;AI Act. Les fournisseurs de systèmes d&#x27;IA à haut risque qui l&#x27;appliquent sont présumés conformes à l&#x27;article 17, le système de gestion de la qualité, et à lui seul : les neuf autres normes demandées en 2025 restent attendues. Construite autour du cycle de vie du système, la norme se superpose à ISO/IEC 42001 ou ISO 9001 ; les établissements financiers en ont surtout besoin pour la gestion des risques, la surveillance après commercialisation et la notification des incidents. Après l&#x27;omnibus de juillet 2026, les obligations « haut risque » s&#x27;appliquent du 2 décembre 2027 (annexe III) et du 2 août 2028 (annexe I).">
+  <style>
+/* Mixed edition: light by default, dark when the system asks for it, and a manual switch
+   (remembered in this browser) that overrides the system in both directions. The two
+   palettes are those already used in this Knowledge Base: the light one of the chapter
+   indexes, the nocturnal one of entry 1. */
+:root{
+  color-scheme:light dark;
+  --bg:#f7f6f3; --panel:#ffffff; --panel-2:#efede8; --quote:#f1efea; --code:#efede8;
+  --ink:#1a1a1a; --ink-strong:#0e0e0e; --muted:#555c66; --rule:#ddd8cf; --rule-soft:#e8e4dc;
+  --accent:#3d6478; --accent-hover:#274a5c; --sel:#d9e4ec; --hover:#f3f1ec; --scroll:#c9c4ba;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+    --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+    --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a; --scroll:#39424f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1015; --panel:#161b23; --panel-2:#1a2029; --quote:#141920; --code:#1b212b;
+  --ink:#dde3ea; --ink-strong:#f2f5f8; --muted:#8c96a4; --rule:#242c37; --rule-soft:#1c232c;
+  --accent:#82aef0; --accent-hover:#a6c8f7; --sel:#2b3d57; --hover:#1a212a; --scroll:#39424f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{max-width:900px;margin:0 auto;padding:56px 24px 104px}
+::selection{background:var(--sel);color:var(--ink-strong)}
+h1{font-family:var(--serif);font-size:clamp(27px,4.4vw,42px);line-height:1.15;font-weight:600;letter-spacing:-.015em;
+  margin:0 0 18px;color:var(--ink-strong);padding-bottom:22px;border-bottom:2px solid var(--accent);text-align:center}
+h2{font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:-.01em;color:var(--ink-strong);
+  margin:60px 0 14px;padding-top:26px;border-top:1px solid var(--rule);scroll-margin-top:16px}
+h2#contents{border-top:none;padding-top:0;margin-top:42px}
+h3{font-size:18px;font-weight:600;margin:38px 0 10px;letter-spacing:-.005em;font-family:var(--serif);color:var(--ink-strong);scroll-margin-top:16px}
+p{margin:0 0 17px;max-width:72ch}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
+a.ref{font-family:var(--sans);font-size:.82em;text-decoration:none;white-space:nowrap}
+strong{font-weight:650;color:var(--ink-strong)}
+ul,ol{max-width:72ch;padding-left:24px;margin:0 0 19px}
+li{margin-bottom:10px}
+li::marker{color:var(--muted)}
+h2#contents + ol{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px 22px 22px 46px;max-width:none;font-size:15px}
+h2#contents + ol li{margin-bottom:8px}
+h2#contents + ol li::marker{color:var(--accent)}
+code{font-family:var(--mono);font-size:.87em;background:var(--code);color:var(--ink);padding:2px 6px;border-radius:4px;word-break:break-word;border:1px solid var(--rule-soft)}
+.scroll{overflow-x:auto;margin:26px 0 30px;border:1px solid var(--rule);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.55}
+thead th{background:var(--panel-2);color:var(--ink-strong);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:650;border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hover)}
+ol.srclist{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px 24px 22px 24px;max-width:none;list-style:none}
+ol.srclist li{margin-bottom:15px;line-height:1.55;font-size:14px;padding-left:52px;position:relative}
+ol.srclist li:last-child{margin-bottom:0}
+ol.srclist li .tag{position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--rule);border-radius:4px;padding:1px 5px}
+ol.srclist a{font-family:var(--mono);font-size:12.5px;word-break:break-all}
+*{scrollbar-color:var(--scroll) var(--bg)}
+.mark{font-family:var(--sans);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;text-align:center}
+nav.crumbs{font-family:var(--sans);font-size:12.5px;text-align:center;color:var(--muted);margin-bottom:26px}
+nav.crumbs a{color:var(--accent)}
+.cartouche{font-family:var(--sans);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:34px;padding-bottom:24px;border-bottom:1px solid var(--rule-soft)}
+.standfirst{font-family:var(--serif);font-size:16px;color:var(--muted);text-align:center;margin:0 0 8px;max-width:none}
+.meta-line{font-family:var(--sans);font-size:13px;color:var(--muted);text-align:center;margin-bottom:38px;max-width:none}
+.theme{position:fixed;top:14px;right:14px;font-family:var(--sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--panel);color:var(--muted);border:1px solid var(--rule);border-radius:99px;padding:6px 12px;cursor:pointer}
+.theme:hover{color:var(--accent);border-color:var(--accent)}
+footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6}
+footer p{margin-bottom:14px;max-width:none}
+footer .backlinks{text-align:center;margin-top:34px;font-size:14px}
+@media (max-width:640px){.wrap{padding:34px 16px 68px}body{font-size:16px}h2#contents + ol{padding-left:38px}.theme{top:8px;right:8px}}
+@media print{html,body{background:#fff;color:#000;font-size:11pt}.wrap{max-width:none;padding:0}.theme{display:none}
+  h1,h2,h3,strong{color:#000}h1{border-bottom-color:#000}h2{border-top-color:#999;page-break-after:avoid}a{color:#000}
+  code,.scroll,h2#contents + ol,ol.srclist{background:#fff;border-color:#bbb;color:#000}thead th{background:#eee;color:#000}
+  .scroll{page-break-inside:avoid;overflow:visible}table{min-width:0;font-size:9pt}td,th{border-bottom-color:#ccc}}
+  
+/* Start-here primer for the non-specialist reader (editorial charter, rule 1) */
+aside.primer{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:18px 22px;margin:8px 0 34px;font-size:15.5px;line-height:1.6;max-width:none}
+aside.primer .primer-title{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px;max-width:none}
+aside.primer p{margin:0 0 10px;max-width:72ch}
+aside.primer p:last-child{margin-bottom:0}
+aside.primer em{font-style:italic;color:var(--ink)}
+@media print{aside.primer{background:#fff;border-color:#bbb}}
+.enjeu{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--accent);text-align:center;margin:0 0 8px}
+
+:root{--accent:#4a4a8c;--accent-hover:#36366b;--kb-c:#4a4a8c;
+  --kb-forme:none;--kb-fond:transparent;--kb-bord:2px solid var(--kb-c);--kb-rayon:50%;
+  --kb-filet:repeating-linear-gradient(90deg,var(--kb-c) 0 2px,transparent 2px 6px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --accent:#a0a0dc;--accent-hover:#c0c0ec;--kb-c:#a0a0dc}}
+:root[data-theme="dark"]{--accent:#a0a0dc;--accent-hover:#c0c0ec;--kb-c:#a0a0dc}
+h1{border-bottom-color:transparent;position:relative}
+h1::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-2px;
+  width:170px;height:4px;background:var(--kb-filet)}
+.mark::before{content:"";display:inline-block;box-sizing:border-box;width:10px;height:10px;
+  vertical-align:1px;margin-right:11px;background:var(--kb-fond);clip-path:var(--kb-forme);
+  border:var(--kb-bord);border-radius:var(--kb-rayon)}
+  </style>
+  <script>(function(){try{var t=localStorage.getItem("kb-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+</head>
+<body>
+  <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">Light / Dark</button>
+  <main class="wrap">
+    <p class="mark">CD Consulting R&amp;D</p>
+    <nav class="crumbs" lang="en"><a href="../index.html">Home</a> · <a href="./">KB-AI</a> · Entry 11</nav>
+    <p class="cartouche" lang="en">KB-AI · Entry 11 · Published 2026-11-02 · Version 1</p>
+<h1>La première norme harmonisée de l'AI Act : ce que l'EN 18286:2026 donne aux fournisseurs de systèmes d'IA à haut risque, et ce qu'elle ne donne pas</h1>
+<p class="standfirst" lang="en">French version of entry 11. Published in the Official Journal on 14 October 2026, EN 18286:2026 is the first harmonised standard of the AI Act: it covers the quality management system of Article 17, and only that, and gives providers that apply it a presumption of conformity. Nine other standards are still expected.</p>
+<p class="enjeu" lang="en">If you read French and provide, buy or audit an AI system that the AI Act may class as high-risk, this is the French version of entry 11: what the first harmonised standard of the AI Act gives you since 14 October 2026, which single obligation it covers, what remains without a standard, and the dates that now apply.</p>
+<p class="meta-line" lang="en">Version française intégrale de l'entrée 11 · Sources consulted on 2 November 2026 · 18 sources, list shared with entry 11 · The text of the standard itself was not consulted.</p>
+<aside class="primer" lang="en">
+<p class="primer-title">Start here — si le sujet est nouveau pour vous</p>
+<p>L'AI Act européen est une loi. Comme la plupart des lois européennes sur les produits, elle dit ce qu'un système d'IA à haut risque doit atteindre, mais laisse le « comment » à des normes techniques, écrites par les organismes européens de normalisation à la demande de la Commission. Quand la Commission publie la référence d'une telle norme au Journal officiel, elle devient une « norme harmonisée » : l'entreprise qui l'applique est présumée satisfaire aux exigences légales que la norme couvre, et n'a plus à le prouver point par point.</p>
+<p>Cela compte parce que, jusqu'au 14 octobre 2026, aucune norme de ce type n'existait pour l'AI Act : chaque fournisseur d'un système à haut risque devait construire sa propre lecture de la loi. La première, l'EN 18286:2026, couvre désormais une obligation parmi celles que la loi impose : le système de gestion de la qualité qu'un fournisseur doit tenir.</p>
+<p>Cette entrée dit ce qui a été publié, ce qu'une norme harmonisée fait juridiquement, ce que l'EN 18286 couvre et laisse ouvert, où en est le calendrier après l'amendement de la loi cet été, et ce qu'un fournisseur, un acheteur ou un auditeur peut en faire dès maintenant.</p>
+</aside>
+<h2 id="contents" lang="en">Contents</h2>
+<ol>
+<li><a href="#1-ce-qui-a-t-publi-en-une-page">1. Ce qui a été publié, en une page</a></li>
+<li><a href="#2-ce-qu-une-norme-harmonis-e-fait-juridiquement">2. Ce qu'une norme harmonisée fait, juridiquement</a></li>
+<li><a href="#3-ce-que-l-en-18286-couvre-l-article-17-point-par-point">3. Ce que l'EN 18286 couvre : l'article 17, point par point</a></li>
+<li><a href="#4-ce-qu-elle-ne-donne-pas">4. Ce qu'elle ne donne pas</a></li>
+<li><a href="#5-le-calendrier-apr-s-l-omnibus-num-rique">5. Le calendrier après l'omnibus numérique</a></li>
+<li><a href="#6-qu-en-faire-d-s-maintenant">6. Qu'en faire dès maintenant</a></li>
+<li><a href="#7-limites-de-cette-note">7. Limites de cette note</a></li>
+<li><a href="#8-sources">8. Sources</a></li>
+</ol>
+
+<h2 id="1-ce-qui-a-t-publi-en-une-page">1. Ce qui a été publié, en une page</h2>
+<p>Le 14 octobre 2026, le Journal officiel de l'Union européenne a publié la décision d'exécution (UE) 2026/2274 de la Commission du 12 octobre 2026 « relative aux normes harmonisées pour les systèmes d'IA à haut risque élaborées à l'appui du règlement (UE) 2024/1689 ». La décision compte deux articles et une annexe d'une seule ligne : <strong>EN 18286:2026, « Intelligence artificielle – Système de management de la qualité à des fins réglementaires du règlement de l'UE sur l'IA »</strong> (titre anglais : <em>Artificial intelligence – Quality management system for EU AI Act regulatory purposes</em>). L'article 1 publie la référence ; l'article 2 fait entrer la décision en vigueur le jour de sa publication parce que, dit le considérant 6, la présomption de conformité court à compter de la date à laquelle la référence paraît au Journal officiel. Aucune restriction n'accompagne la référence <a class="ref" href="#S1">[S1]</a>.</p>
+<p>La chaîne qui y a conduit est écrite dans les considérants. Le 23 juin 2025, la Commission a adressé au CEN et au CENELEC, les deux organismes européens de normalisation, une demande de normalisation (décision d'exécution C(2025) 3871, remplaçant une première demande de 2023) pour des normes harmonisées à l'appui de l'AI Act ; le point 9 de son annexe I demandait une norme sur « les systèmes de gestion de la qualité pour les fournisseurs de systèmes d'IA, y compris les processus de surveillance après commercialisation ». Le CEN et le CENELEC ont achevé ce point en premier ; la Commission a évalué le résultat avec eux et a constaté qu'il « satisfait aux exigences qu'il vise à couvrir » <a class="ref" href="#S1">[S1]</a>. Côté organismes de normalisation, le projet (prEN 18286) est passé en enquête publique le 30 octobre 2025 <a class="ref" href="#S5">[S5]</a>, dans un paquet exceptionnel d'accélération adopté par le CEN et le CENELEC en octobre 2025 pour les normes IA de leur comité technique conjoint JTC 21, avec pour objectif déclaré de disposer des normes clés au quatrième trimestre 2026 <a class="ref" href="#S11">[S11]</a>. La norme européenne elle-même a été publiée par le CEN-CENELEC à la fin de juillet 2026 <a class="ref" href="#S4">[S4]</a> ; sa citation au Journal officiel, le 14 octobre, a coïncidé avec la Journée mondiale de la normalisation <a class="ref" href="#S3">[S3]</a>. La Commission a annoncé la publication le 19 octobre <a class="ref" href="#S2">[S2]</a>.</p>
+<p>La description de la Commission, reprise mot pour mot par plusieurs commentateurs depuis, donne les trois traits distinctifs de la norme : elle est « la seule norme de SMQ pour l'IA assortie d'une présomption de conformité » ; elle est « construite autour du cycle de vie du système d'IA, plutôt qu'autour de l'organisation » ; et elle est « conçue pour se superposer aux normes internationales existantes, telles qu'ISO/IEC 42001, ISO 9001 ou un SMQ sectoriel (par exemple ISO 13485), plutôt que pour les remplacer » <a class="ref" href="#S2">[S2]</a>.</p>
+
+<h2 id="2-ce-qu-une-norme-harmonis-e-fait-juridiquement">2. Ce qu'une norme harmonisée fait, juridiquement</h2>
+<p>L'article 40 de l'AI Act est la charnière. Les systèmes d'IA à haut risque « conformes à des normes harmonisées ou à des parties de normes harmonisées dont les références ont été publiées au Journal officiel » sont présumés conformes aux exigences du chapitre III, section 2 (les exigences applicables aux systèmes à haut risque, articles 8 à 15, et par extension les obligations du fournisseur qui y renvoient), « dans la mesure où ces normes couvrent ces exigences » <a class="ref" href="#S7">[S7]</a>. Le mécanisme est celui, ordinaire, de la législation européenne sur les produits, régi par le règlement (UE) n° 1025/2012 relatif à la normalisation européenne, dont l'article 10, paragraphe 6, est la base juridique de la décision du 12 octobre <a class="ref" href="#S1">[S1]</a>.</p>
+<p>Quatre conséquences en découlent.</p>
+<p><strong>Appliquer la norme est volontaire.</strong> La page de la Commission sur la normalisation le dit en toutes lettres : « l'application des normes reste volontaire » <a class="ref" href="#S5">[S5]</a>. Un fournisseur peut satisfaire à l'article 17 par d'autres moyens. Mais la loi rend le choix visible : parmi les éléments qu'un système de gestion de la qualité doit documenter, le point e) de l'article 17, paragraphe 1, demande « les spécifications techniques, y compris les normes, à appliquer et, lorsque les normes harmonisées pertinentes ne sont pas appliquées intégralement, [...] les moyens à utiliser pour garantir que le système d'IA à haut risque satisfait » aux exigences <a class="ref" href="#S6">[S6]</a>. Ne pas utiliser la norme est permis ; cela doit être expliqué.</p>
+<p><strong>La présomption a la largeur de la norme, pas davantage.</strong> L'article 40 dit « dans la mesure où » ; le considérant 5 de la décision dit que la norme « satisfait aux exigences qu'elle vise à couvrir ». L'EN 18286 vise l'article 17. Rien dans la décision n'étend la présomption au système de gestion des risques de l'article 9, à la gouvernance des données de l'article 10 ni aux autres exigences de la section 2, dont chacune attend sa propre norme (section 4) <a class="ref" href="#S1">[S1]</a> <a class="ref" href="#S7">[S7]</a> <a class="ref" href="#S13">[S13]</a>.</p>
+<p><strong>La présomption court à compter de la citation, pas de la publication de la norme.</strong> Entre la fin de juillet 2026, quand le CEN-CENELEC a publié l'EN 18286, et le 14 octobre, la norme existait mais ne conférait rien ; un commentaire du début septembre notait à juste titre qu'aucune norme harmonisée de l'AI Act n'avait encore été citée <a class="ref" href="#S13">[S13]</a>. Le considérant 6 de la décision ferme cet écart le jour de la publication <a class="ref" href="#S1">[S1]</a>.</p>
+<p><strong>La norme est aussi l'étalon de l'évaluation de la conformité.</strong> Pour les systèmes à haut risque de l'annexe III autres que la biométrie (points 2 à 8 : infrastructures critiques, éducation, emploi, services essentiels et crédit, répression, migration, justice), le fournisseur évalue lui-même la conformité, selon la procédure de contrôle interne de l'annexe VI, sans organisme notifié <a class="ref" href="#S16">[S16]</a>. La norme harmonisée est alors ce à quoi le fournisseur mesure son système de gestion de la qualité, et ce qu'il cite dans sa déclaration UE de conformité. Pour les systèmes biométriques (annexe III, point 1), le choix entre contrôle interne et organisme notifié n'est ouvert qu'au fournisseur qui a appliqué des normes harmonisées ; celui qui n'en a appliqué aucune, ou seulement une partie, doit passer par un organisme notifié <a class="ref" href="#S16">[S16]</a>. Pour les systèmes d'IA intégrés à des produits déjà réglementés (annexe I, section A : machines, dispositifs médicaux, véhicules et autres), la procédure sectorielle d'évaluation de la conformité s'applique, et le système de gestion de la qualité de l'article 17 y est évalué <a class="ref" href="#S16">[S16]</a>.</p>
+
+<h2 id="3-ce-que-l-en-18286-couvre-l-article-17-point-par-point">3. Ce que l'EN 18286 couvre : l'article 17, point par point</h2>
+<p>L'article 17 impose à tout fournisseur d'un système d'IA à haut risque de mettre en place un système de gestion de la qualité « qui garantit le respect du présent règlement », documenté « de manière méthodique et ordonnée sous la forme de politiques, de procédures et d'instructions écrites ». Son paragraphe 1 énumère ce qu'il doit comprendre, en treize points <a class="ref" href="#S6">[S6]</a> :</p>
+<div class="scroll"><table><thead><tr><th>Point</th><th>Ce que demande l'article 17, paragraphe 1</th></tr></thead><tbody>
+<tr><td>a)</td><td>Une stratégie de conformité réglementaire, y compris l'évaluation de la conformité et la gestion des modifications</td></tr>
+<tr><td>b)</td><td>Des techniques, procédures et actions systématiques pour la conception, le contrôle et la vérification de la conception</td></tr>
+<tr><td>c)</td><td>Les mêmes pour le développement, le contrôle et l'assurance de la qualité</td></tr>
+<tr><td>d)</td><td>Des procédures d'examen, d'essai et de validation avant, pendant et après le développement, et leur fréquence</td></tr>
+<tr><td>e)</td><td>Les spécifications techniques, y compris les normes, à appliquer ; si les normes harmonisées ne sont pas appliquées intégralement, les moyens utilisés pour se conformer</td></tr>
+<tr><td>f)</td><td>Des systèmes et procédures de gestion des données sur tout le cycle de vie des données avant la mise sur le marché</td></tr>
+<tr><td>g)</td><td>Le système de gestion des risques de l'article 9</td></tr>
+<tr><td>h)</td><td>Le système de surveillance après commercialisation de l'article 72</td></tr>
+<tr><td>i)</td><td>Les procédures de notification des incidents graves de l'article 73</td></tr>
+<tr><td>j)</td><td>La communication avec les autorités nationales compétentes, les organismes notifiés, les autres opérateurs, les clients et autres parties intéressées</td></tr>
+<tr><td>k)</td><td>La tenue des registres de toute la documentation et de toutes les informations pertinentes</td></tr>
+<tr><td>l)</td><td>La gestion des ressources, y compris les mesures de sécurité d'approvisionnement</td></tr>
+<tr><td>m)</td><td>Un cadre de responsabilisation définissant les responsabilités de l'encadrement et du personnel</td></tr>
+</tbody></table></div>
+<p>Les autres paragraphes comptent autant que la liste. Le paragraphe 2, amendé par l'omnibus de juillet 2026, exige une mise en œuvre « proportionnée à la taille de l'organisation du fournisseur », les petites et moyennes entreprises, les jeunes pousses et les petites entreprises à moyenne capitalisation étant désormais nommées, sans abaisser « le degré de rigueur et le niveau de protection » <a class="ref" href="#S6">[S6]</a>. Le paragraphe 3 permet à un fournisseur déjà soumis à une obligation sectorielle de gestion de la qualité au titre du droit de l'Union d'intégrer les treize points à ce système existant. Le paragraphe 4 est celui qu'une banque ou un assureur belge lira en premier : les fournisseurs qui sont des établissements financiers soumis aux exigences de gouvernance interne du droit de l'Union sur les services financiers sont « réputés » satisfaire à l'obligation de l'article 17, <strong>à l'exception des points g), h) et i)</strong>, gestion des risques, surveillance après commercialisation et notification des incidents graves, et doivent néanmoins tenir compte des normes harmonisées adoptées au titre de l'article 40 <a class="ref" href="#S6">[S6]</a>. L'article 63, lui aussi amendé en juillet, ajoute que les PME et les jeunes pousses sans entreprises partenaires ou liées peuvent se conformer à certains éléments du système de gestion de la qualité « de manière simplifiée », selon des lignes directrices que la Commission doit publier <a class="ref" href="#S17">[S17]</a>.</p>
+<p>Ce que la norme fait de ces treize points n'est connu que par les descriptions de ses éditeurs, son texte n'étant pas librement accessible (section 7). La Commission dit qu'elle « traduit ces exigences en un système opérationnel de gestion de la qualité », « mis en correspondance avec l'article 17 », organisé autour du cycle de vie du système d'IA plutôt que de l'organisation, et conçu pour se superposer à ISO/IEC 42001, ISO 9001 ou une norme de qualité sectorielle telle qu'ISO 13485 pour les dispositifs médicaux ; elle « permet explicitement aux fournisseurs des secteurs réglementés d'intégrer leurs systèmes de management plutôt que d'en tenir des séparés », et une organisation sans ISO/IEC 42001 peut l'utiliser « pour étendre un SMQ existant ou en bâtir un » <a class="ref" href="#S2">[S2]</a>. Le CEN-CENELEC la décrit comme « un cadre de gouvernance, de maîtrise du cycle de vie, de documentation et de cohérence » et comme « la première brique » d'un ensemble plus large couvrant la gestion des risques, la cybersécurité et la journalisation <a class="ref" href="#S4">[S4]</a>.</p>
+<p>La relation à ISO/IEC 42001 appelle une précision. ISO/IEC 42001:2023, publiée en décembre 2023 par l'ISO/IEC JTC 1/SC 42, est une norme internationale de système de management pour les organisations qui fournissent ou utilisent de l'IA, certifiable comme ISO 9001 ou ISO 27001 <a class="ref" href="#S15">[S15]</a>. Ce n'est pas une norme harmonisée : sa référence n'est pas au Journal officiel et elle ne confère aucune présomption de conformité au titre de l'AI Act <a class="ref" href="#S13">[S13]</a>. Les deux se recouvrent par leur structure et leurs contrôles, mais la formule de la Commission, « se superposer à », dit l'ordre : la 42001 gouverne l'organisation, l'EN 18286 gouverne le cycle de vie du système aux fins de l'article 17.</p>
+
+<h2 id="4-ce-qu-elle-ne-donne-pas">4. Ce qu'elle ne donne pas</h2>
+<p><strong>Une obligation sur dix domaines.</strong> La demande de normalisation de 2025 énumère dix domaines : gestion des risques, gouvernance et qualité des jeux de données, tenue de registres, transparence, contrôle humain, exactitude, robustesse, cybersécurité, gestion de la qualité et évaluation de la conformité <a class="ref" href="#S5">[S5]</a>. L'EN 18286 répond au neuvième. Trois points de l'article 17 lui-même, g), h) et i), renvoient aux articles 9, 72 et 73 : le système de gestion de la qualité organise le processus de gestion des risques, de surveillance après commercialisation et de notification des incidents, mais la norme de fond sur la manière de gérer le risque, et les normes sur les données, la journalisation, la transparence, le contrôle humain, l'exactitude, la robustesse et la cybersécurité, sont encore en préparation au JTC 21, avec le quatrième trimestre 2026 pour objectif du CEN-CENELEC <a class="ref" href="#S11">[S11]</a>. L'annonce de la Commission se termine sur « d'autres normes harmonisées devraient suivre » <a class="ref" href="#S2">[S2]</a>.</p>
+<p><strong>Aucune présomption au-delà de l'article 17.</strong> Un fournisseur qui applique l'EN 18286 est présumé disposer d'un système de gestion de la qualité conforme ; il n'est pas présumé disposer de données d'entraînement conformes, d'une analyse des risques conforme ni d'une conception conforme du contrôle humain. Tant que ces normes ne sont pas citées, chacune de ces exigences se satisfait sur la démonstration propre du fournisseur, ou sur les spécifications communes de l'article 41 si la Commission en adopte <a class="ref" href="#S7">[S7]</a> <a class="ref" href="#S13">[S13]</a>.</p>
+<p><strong>Une norme, pas un certificat.</strong> La loi ne connaît pas de « certificat EN 18286 ». Ce qui existe, c'est la déclaration UE de conformité du fournisseur (article 47), établie sous sa seule responsabilité, qui doit citer « les normes harmonisées pertinentes utilisées » (annexe V, point 6) <a class="ref" href="#S18">[S18]</a>, et, quand un organisme notifié intervient, le certificat de cet organisme sur le système de gestion de la qualité et la documentation technique (annexe VII) <a class="ref" href="#S16">[S16]</a>. Un fournisseur qui annonce « la conformité à l'EN 18286 » annonce une auto-évaluation, sauf si un organisme notifié l'a examinée.</p>
+<p><strong>Aucune lecture clause par clause ici.</strong> Les descriptions de la Commission et du CEN-CENELEC ne donnent pas la structure de la norme, et cette note ne l'invente pas (section 7).</p>
+
+<h2 id="5-le-calendrier-apr-s-l-omnibus-num-rique">5. Le calendrier après l'omnibus numérique</h2>
+<p>Le moment de la publication se lit au mieux contre le calendrier de la loi, qui a changé pendant l'été. Le règlement (UE) 2026/1744 du 8 juillet 2026, l'« omnibus numérique sur l'IA », a été publié au Journal officiel le 24 juillet et est entré en vigueur le 27 juillet 2026, troisième jour après sa publication <a class="ref" href="#S9">[S9]</a>. Son deuxième considérant nomme, parmi les raisons de l'amendement, « la préparation tardive des normes, qui fournissent des solutions techniques aux fournisseurs de systèmes d'IA à haut risque pour assurer le respect de leurs obligations », d'où « une charge de mise en conformité plus lourde que prévu » <a class="ref" href="#S9">[S9]</a>. Il a réécrit l'article 113, l'article sur l'entrée en application <a class="ref" href="#S8">[S8]</a> :</p>
+<div class="scroll"><table><thead><tr><th>Disposition</th><th>Date d'application</th><th>Situation après l'omnibus</th></tr></thead><tbody>
+<tr><td>Chapitres I et II (définitions, pratiques interdites)</td><td>2 février 2025</td><td>inchangée, sauf les interdictions nouvelles ajoutées par l'omnibus, applicables à partir du 2 décembre 2026</td></tr>
+<tr><td>Article 50 (transparence : dire aux personnes qu'elles parlent à une IA, marquer les contenus synthétiques)</td><td>2 août 2026</td><td>inchangée ; les fournisseurs de systèmes génératifs déjà sur le marché ont jusqu'au 2 décembre 2026 pour le marquage lisible par machine <a class="ref" href="#S14">[S14]</a></td></tr>
+<tr><td>Chapitre III, sections 1 à 3 (classification, exigences et obligations pour les systèmes à haut risque), pour les systèmes de l'annexe III</td><td><strong>2 décembre 2027</strong></td><td>reportée du 2 août 2026</td></tr>
+<tr><td>Idem, pour les systèmes d'IA intégrés aux produits de l'annexe I</td><td><strong>2 août 2028</strong></td><td>reportée du 2 août 2027</td></tr>
+<tr><td>Articles 102 à 110 (modifications d'actes sectoriels)</td><td>27 juillet 2026</td><td>nouveau</td></tr>
+</tbody></table></div>
+<p>L'article 17 se trouve au chapitre III, section 3. Pour un système à haut risque autonome (emploi, crédit, assurance, éducation, infrastructures critiques), le système de gestion de la qualité doit donc être en place au 2 décembre 2027 ; pour un système intégré, au 2 août 2028 <a class="ref" href="#S8">[S8]</a>. L'EN 18286 arrive ainsi un peu moins de quatorze mois avant la première de ces dates, et avant les neuf autres normes. C'est le sens de la formule de la Commission, « en amont de l'application des exigences relatives aux systèmes d'IA à haut risque » <a class="ref" href="#S2">[S2]</a> : le premier outil est sur la table alors que l'échéance est encore devant, ce qui n'était pas le cas sous le calendrier d'origine.</p>
+<p>Pour les dates qui lient toute entreprise, et pas seulement les fournisseurs de systèmes à haut risque, l'article 4 (maîtrise de l'IA, depuis le 2 février 2025, assoupli mais non supprimé par l'omnibus) et l'article 50 (depuis le 2 août 2026), voir l'entrée 4 de ce chapitre, <a href="9f4b.html">Sécuriser l'IA dans l'entreprise</a>, section sur le cadre belge et européen.</p>
+
+<h2 id="6-qu-en-faire-d-s-maintenant">6. Qu'en faire dès maintenant</h2>
+<p><strong>Si vous fournissez, ou fournirez, un système qui peut être à haut risque.</strong> Réglez d'abord la classification (article 6, annexes I et III ; l'omnibus a resserré la notion de « composant de sécurité » aux systèmes dont la destination est de prévenir ou d'atténuer des risques pour la santé, la sécurité ou les biens <a class="ref" href="#S9">[S9]</a>). Mettez ensuite en correspondance ce que vous tenez déjà, un système ISO 9001, un système ISO/IEC 42001, un système de qualité sectoriel ou une gouvernance interne au titre du droit financier, avec les treize points de l'article 17, paragraphe 1 : cette correspondance est le travail que la norme est conçue pour organiser, et les paragraphes 3 et 4 disent ce qui peut être réutilisé. Achetez la norme auprès de votre organisme national de normalisation et faites l'analyse d'écart clause par clause ; les descriptions de la section 3 n'en tiennent pas lieu. Gardez à part les points g), h) et i) : ce sont ceux que la dispense financière ne couvre pas, et ceux dont les normes de fond sont encore attendues. Si vous êtes une PME ou une jeune pousse sans entreprises liées, guettez les lignes directrices de la Commission sur le système de gestion de la qualité simplifié <a class="ref" href="#S17">[S17]</a>.</p>
+<p><strong>Si vous achetez ou déployez.</strong> Les obligations du déployeur (article 26 : usage conforme à la notice, contrôle humain, journaux, information des travailleurs et des personnes) sont inchangées et commencent aux mêmes dates. Ce qui change, c'est la question que vous pouvez désormais poser à un fournisseur : son système de gestion de la qualité suit-il l'EN 18286, et sa déclaration UE de conformité la citera-t-elle ? Un oui est une auto-évaluation pour la plupart des systèmes de l'annexe III (section 2) ; demandez donc la déclaration et, quand l'achat est assez important, la documentation derrière les points g), h) et i). Un certificat ISO/IEC 42001 est un bon signe sur l'organisation ; ce n'est pas la même chose.</p>
+<p><strong>Si vous auditez ou gérez les risques.</strong> La table de la section 3 est une liste de contrôle en treize lignes qui n'existait pas sous forme opérationnelle auparavant. Pour un établissement financier, la question d'audit utile est plus étroite que la norme : la gestion des risques, la surveillance après commercialisation et la notification des incidents graves pour les systèmes d'IA sont-elles tenues comme des processus, avec des responsables, des enregistrements et des seuils, puisque ces trois points sont ceux que la loi ne répute pas déjà couverts par la gouvernance interne <a class="ref" href="#S6">[S6]</a>. Pour tous, la seconde question est la discipline de calendrier : le 2 décembre 2027 est fixé dans la loi, non conditionné à la disponibilité des normes restantes <a class="ref" href="#S8">[S8]</a> <a class="ref" href="#S14">[S14]</a>.</p>
+
+<h2 id="7-limites-de-cette-note">7. Limites de cette note</h2>
+<p>Le texte de l'EN 18286:2026 n'a pas été consulté : il est vendu par les membres nationaux du CEN et du CENELEC, et cette note n'en reproduit ni n'en déduit les clauses. Tout ce qui est dit de son contenu vient de l'annonce de la Commission du 19 octobre 2026 et des pages du CEN-CENELEC des 31 juillet et 15 octobre 2026, qui sont promotionnelles autant que descriptives. La demande de normalisation C(2025) 3871 n'a pas été ouverte ; son contenu est cité par les considérants de la décision 2026/2274 et la page de la Commission sur la normalisation. Les articles de l'AI Act sont cités d'après le Service Desk AI Act de la Commission, qui reproduit le texte consolidé au 27 juillet 2026 avec des résumés non contraignants ; les textes du Journal officiel de la décision 2026/2274 et du règlement 2026/1744 ont été lus sur EUR-Lex. Les citations de textes anglais sont traduites par l'auteur de la note. Trois commentaires (une lettre d'information, un blog de conformité, une note de recherche) n'ont servi qu'à recouper des dates et à situer ISO/IEC 42001 ; chaque date de cette note a été vérifiée à la source officielle. Les organismes notifiés belges, le prix de la norme et les schémas de certification privés sont hors champ.</p>
+
+<h2 id="8-sources">8. Sources</h2>
+<p>Toutes les sources ont été consultées le 2 novembre 2026. Typées : official (droit de l'UE, Commission, organismes de normalisation), press (commentaire). Liste commune avec l'entrée 11.</p>
+<ol class="srclist">
+<li id="S1"><span class="tag">S1</span> Official (EU law). Commission Implementing Decision (EU) 2026/2274 of 12 October 2026 on the harmonised standards for high-risk AI systems drafted in support of Regulation (EU) 2024/1689, OJ L, 2026/2274, 14 October 2026. <a href="https://eur-lex.europa.eu/eli/dec_impl/2026/2274/oj/eng" rel="noopener noreferrer" target="_blank">https://eur-lex.europa.eu/eli/dec_impl/2026/2274/oj/eng</a></li>
+<li id="S2"><span class="tag">S2</span> Official (Commission). European Commission, "First harmonised standard supporting the AI Act published in the Official Journal", Shaping Europe's digital future, 19 October 2026 (updated 21 October 2026). <a href="https://digital-strategy.ec.europa.eu/en/library/first-harmonised-standard-supporting-ai-act-published-official-journal" rel="noopener noreferrer" target="_blank">https://digital-strategy.ec.europa.eu/en/library/first-harmonised-standard-supporting-ai-act-published-official-journal</a></li>
+<li id="S3"><span class="tag">S3</span> Official (standards body). CEN-CENELEC, "First ever European standard on AI published in the OJEU", 15 October 2026. <a href="https://www.cencenelec.eu/news-events/news/2026/en-in-the-spotlight/2026-10-15-en-18286-2026-published-in-ojeu/" rel="noopener noreferrer" target="_blank">https://www.cencenelec.eu/news-events/news/2026/en-in-the-spotlight/2026-10-15-en-18286-2026-published-in-ojeu/</a></li>
+<li id="S4"><span class="tag">S4</span> Official (standards body). CEN-CENELEC, "EN 18286 in the Spotlight: Supporting Compliance with the AI Act", 31 July 2026. <a href="https://www.cencenelec.eu/news-events/news/2026/en-in-the-spotlight/2026-07-30-ai-quality-management/" rel="noopener noreferrer" target="_blank">https://www.cencenelec.eu/news-events/news/2026/en-in-the-spotlight/2026-07-30-ai-quality-management/</a></li>
+<li id="S5"><span class="tag">S5</span> Official (Commission). European Commission, "AI Act: standardisation" (policy page: standardisation request, JTC 21, the ten areas, public enquiry of prEN 18286 on 30 October 2025). <a href="https://digital-strategy.ec.europa.eu/en/policies/ai-act-standardisation" rel="noopener noreferrer" target="_blank">https://digital-strategy.ec.europa.eu/en/policies/ai-act-standardisation</a></li>
+<li id="S6"><span class="tag">S6</span> Official (Commission). AI Act Service Desk, Article 17 "Quality management system", consolidated text as at 27 July 2026. <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-17" rel="noopener noreferrer" target="_blank">https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-17</a></li>
+<li id="S7"><span class="tag">S7</span> Official (Commission). AI Act Service Desk, Article 40 "Harmonised standards and standardisation deliverables". <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-40" rel="noopener noreferrer" target="_blank">https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-40</a></li>
+<li id="S8"><span class="tag">S8</span> Official (Commission). AI Act Service Desk, Article 113 "Entry into force and application", as amended. <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113" rel="noopener noreferrer" target="_blank">https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113</a></li>
+<li id="S9"><span class="tag">S9</span> Official (EU law). Regulation (EU) 2026/1744 of the European Parliament and of the Council of 8 July 2026 amending Regulations (EU) 2024/1689, (EU) 2018/1139 and (EU) 2023/1230 as regards the simplification of the implementation of harmonised rules on artificial intelligence (Digital Omnibus on AI), OJ L, 2026/1744, 24 July 2026. <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng" rel="noopener noreferrer" target="_blank">https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng</a></li>
+<li id="S10"><span class="tag">S10</span> Official (Commission). Commission Implementing Decision C(2025) 3871 of 23 June 2025 on a standardisation request to CEN and CENELEC as regards high-risk AI systems, repealing Implementing Decision C(2023) 3215 (not opened; cited through [S1] and [S5]). <a href="https://ec.europa.eu/transparency/documents-register/api/files/C(2025" rel="noopener noreferrer" target="_blank">https://ec.europa.eu/transparency/documents-register/api/files/C(2025</a>)3871_0/de00000001072818</li>
+<li id="S11"><span class="tag">S11</span> Official (standards body). CEN-CENELEC, "Update on CEN and CENELEC's Decision to Accelerate the Development of Standards for Artificial Intelligence", 23 October 2025. <a href="https://www.cencenelec.eu/news-events/news/2025/brief-news/2025-10-23/" rel="noopener noreferrer" target="_blank">https://www.cencenelec.eu/news-events/news/2025/brief-news/2025-10-23/</a></li>
+<li id="S12"><span class="tag">S12</span> Press (newsletter). Luiza Jarovsky, "The EU's First AI Standard Is Here", 14 October 2026. <a href="https://www.luizasnewsletter.com/p/the-eus-first-ai-standard-is-here" rel="noopener noreferrer" target="_blank">https://www.luizasnewsletter.com/p/the-eus-first-ai-standard-is-here</a></li>
+<li id="S13"><span class="tag">S13</span> Press (compliance blog). Reglog, "EN 18286 is published: the first AI Act harmonised standard, and what it does not give you yet", September 2026. <a href="https://reglog.io/blog/en-18286-first-ai-act-harmonised-standard" rel="noopener noreferrer" target="_blank">https://reglog.io/blog/en-18286-first-ai-act-harmonised-standard</a></li>
+<li id="S14"><span class="tag">S14</span> Press (research note). Cloud Security Alliance, "EU AI Act's High-Risk Deadline: Deferred, Not Cancelled", 2026. <a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-high-risk-deadline-omnibus-20260/" rel="noopener noreferrer" target="_blank">https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-high-risk-deadline-omnibus-20260/</a></li>
+<li id="S15"><span class="tag">S15</span> Official (standards body). ISO, "ISO/IEC 42001:2023 — Information technology — Artificial intelligence — Management system" (published December 2023, ISO/IEC JTC 1/SC 42, 51 pages). <a href="https://www.iso.org/standard/42001" rel="noopener noreferrer" target="_blank">https://www.iso.org/standard/42001</a></li>
+<li id="S16"><span class="tag">S16</span> Official (Commission). AI Act Service Desk, Article 43 "Conformity assessment". <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-43" rel="noopener noreferrer" target="_blank">https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-43</a></li>
+<li id="S17"><span class="tag">S17</span> Official (Commission). AI Act Service Desk, Article 63 "Derogations for specific operators". <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-63" rel="noopener noreferrer" target="_blank">https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-63</a></li>
+<li id="S18"><span class="tag">S18</span> Official (Commission). AI Act Service Desk, Annex V "EU declaration of conformity". <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-5" rel="noopener noreferrer" target="_blank">https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-5</a></li>
+</ol>
+
+
+    <footer lang="en">
+      <p>This text is © CD Consulting R&amp;D and licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener noreferrer" target="_blank">CC BY-NC-ND 4.0</a> (attribution, non-commercial, no derivatives). Quoted figures and sentences remain the property of their publishers, the Publications Office of the European Union, the European Commission, CEN-CENELEC and ISO.</p>
+      <p class="backlinks"><a href="./">← KB-AI</a> · <a href="../index.html">CD Consulting R&amp;D</a></p>
+    </footer>
+  </main>
+  <script>(function(){var b=document.getElementById("theme");b.addEventListener("click",function(){var r=document.documentElement;var cur=r.getAttribute("data-theme");var sys=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";var now=(cur||sys)==="dark"?"light":"dark";r.setAttribute("data-theme",now);try{localStorage.setItem("kb-theme",now);}catch(e){}});})();</script>
+</body>
+</html>
